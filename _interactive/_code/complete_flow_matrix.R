@@ -22,6 +22,7 @@ macro_to_regionFiles <- lapply(macro_to_region, function(x)
 region_to_macroFiles <- lapply(region_to_macro, function(x)
 {
   z <- read.csv(x); rownames(z) <- z[,1]; z <- z[,-1]
-  colnames(z) <- c("North\nAmerica","Latin\nAmerica","Africa","Europe","W Asia and\nSE Mediterranean","Central\nAsia")
+  colnames(z) <- c("North\nAmerica","Latin\nAmerica","Africa","Europe","W Asia and\nSE Mediterranean","Central\nAsia",
+                   "South\nAsia","East\nAsia","Southeast\nAsia","Pacific")
   return(z)
 })
