@@ -7,10 +7,10 @@
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#
 
 # Load data
-work_dir = "F:/CIAT/Interdependence/production_data/by_area"
-main_data_set <- read.csv(paste(work_dir, "/outputs_merged/area_2009-2011_mean_mc_fm_selcom_selcoun.csv", sep=""), header=T)
-ctry_data_set <- read.csv(paste(work_dir, "/Countries_FS_2009-2011_data_regions_2015_3_24.csv", sep=""), header=T)
-comm_data_set <- read.csv("F:/CIAT/Interdependence/scripts/interdependence_prod_bayesian/Item_region_production_2015_2_12.csv", header=T)
+work_dir <- "C:/Users/haachicanoy/Documents/GitHub/interdependence_circos/_production_systems/_macro"
+main_data_set <- read.csv(paste(work_dir, "/_inputs/area_2009-2011_mean_mc_fm_selcom_selcoun.csv", sep=""), header=T)
+ctry_data_set <- read.csv(paste(work_dir, "/_inputs/Countries_FS_2009-2011_data_regions_2016_1_20.csv", sep=""), header=T)
+comm_data_set <- read.csv(paste(work_dir, "/_inputs/Item_region_production_2015_2_12.csv", sep=''), header=T)
 
 dim(main_data_set)
 dim(ctry_data_set)
