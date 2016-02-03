@@ -59,25 +59,24 @@ matrixNames <- c("North\nAmerica", "N\nAmerica_reg",
 
 # Remember: rows are origins and columns are recipients
 
-flows_matrix <- matrix(data=NA, nrow=length(matrixNames), ncol=length(matrixNames))
-rownames(flows_matrix) <- colnames(flows_matrix) <- matrixNames
-flows_matrix <- as.data.frame(flows_matrix)
-
-macro_names <- rownames(macroFiles[[1]])
-region_names <- rownames(regionFiles[[1]])
-
-# Case 1: macro to macro
-flows_matrix[macro_names, macro_names] <- macroFiles[[1]]; flows_matrix <- as.data.frame(flows_matrix)
-
-# Case 2: region to region
-flows_matrix[region_names, region_names] <- regionFiles[[1]]; flows_matrix <- as.data.frame(flows_matrix)
-
-# Case 3: macro to region
-flows_matrix[macro_names, region_names] <- macro_to_regionFiles[[1]]; flows_matrix <- as.data.frame(flows_matrix)
-
-# Case 4: region to macro
-flows_matrix[region_names, macro_names] <- region_to_macroFiles[[1]]; flows_matrix <- as.data.frame(flows_matrix)
-
-write.csv(flows_matrix, paste(work_dir, '/_interactive/calories.csv', sep=''), row.names=TRUE)
-
-
+elements <- c('calories','fat','food_weight','protein')
+lapply(1:length(macroFiles), function(i)
+{
+  # Create empty matrix
+  flows_matrix <- matrix(data=NA, nrow=length(matrixNames), ncol=length(matrixNames))
+  rownames(flows_matrix) <- colnames(flows_matrix) <- matrixNames
+  flows_matrix <- as.data.frame(flows_matrix)
+  
+  # Define names of groups and elements
+  macro_names <- rownames(macroFiles[[1]])
+  region_names <- rownames(regionFiles[[1]])
+  
+  flows_matrix[macro_names, macro_names] <- macroFiles[[i]]; flows_matrix <- as.data.frame(flows_matrix) # macro to macro
+  flows_matrix[region_names, region_names] <- regionFiles[[i]]; flows_matrix <- as.data.frame(flows_matrix) # region to region
+  flows_matrix[macro_names, region_names] <- macro_to_regionFiles[[i]]; flows_matrix <- as.data.frame(flows_matrix) # macro to region
+  flows_matrix[region_names, macro_names] <- region_to_macroFiles[[i]]; flows_matrix <- as.data.frame(flows_matrix) # region to macro
+  
+  write.csv(flows_matrix, paste(work_dir, '/_interactive/_flows_matrix/interchange_complete_flows_', elements[[i]], '.csv', sep=''), row.names=TRUE)
+  
+  return(cat('Done!\n'))
+})
