@@ -3,7 +3,8 @@
 # CIAT, 2016
 
 #fs_data_elements <- read.csv("F:/CIAT/Interdependence/scripts/interdependence_fs_bayesian/dependence_2009-2011/food_supplies_countries_regions_all_merge.csv")
-fs_data_elements <- read.csv("D:/Tobackup/_hmcfw/PGR_interdependence/analysis/Origins_crops_diets/circos/FS/2016new/food_supplies_countries_regions_all_merge.csv")
+work_dir <- 'C:/Users/haachicanoy/Documents/GitHub/interdependence_circos/_regions'
+fs_data_elements <- read.csv(paste(work_dir, "/_outputs/food_supplies_countries_regions_all_merge.csv", sep=''))
 #note the above file is fine as per 2016_1_20; it only lists SEM for region for Occupied Palestianian Territories but fine because only used to extract item, country, element, data, and region_crops (not regions of countries) 
 
 fs_data_elements <- fs_data_elements[,c("Item", "Country", "Element", paste("Y",2009:2011,sep=""))]
@@ -18,18 +19,18 @@ library(dplyr)
 data_exp <- fs_data_elements; rm(fs_data_elements)
 
 #fs_data_elements_all <- read.csv("F:/CIAT/Interdependence/scripts/interdependence_fs_bayesian/dependence_2009-2011/food_supplies_countries_regions_all_merge.csv")
-fs_data_elements_all <- read.csv("D:/Tobackup/_hmcfw/PGR_interdependence/analysis/Origins_crops_diets/circos/FS/2016new/food_supplies_countries_regions_all_merge.csv")
+fs_data_elements_all <- read.csv(paste(work_dir, "/_outputs/food_supplies_countries_regions_all_merge.csv", sep=''))
 fs_data_elements_all <- fs_data_elements_all[,c("Item", "Region_crops")]
 fs_data_elements_all <- unique(fs_data_elements_all)
 
 data_exp <- merge(data_exp, fs_data_elements_all, by=c("Item"))
 
 #write.csv(data_exp, "F:/CIAT/Interdependence/crop_importance/circos/FS_items_country_regions.csv", row.names=F)
-write.csv(data_exp, "D:/Tobackup/_hmcfw/PGR_interdependence/analysis/Origins_crops_diets/circos/FS/2016new/FS_items_country_regions.csv", row.names=F)
+write.csv(data_exp, paste(work_dir, "/_outputs/circos/FS/FS_items_country_regions.csv", sep=''), row.names=F)
 #note this file is perfect as is as per 2016_1_20 no update needed
 
 #data_exp <- read.csv("F:/CIAT/Interdependence/crop_importance/circos/FS_items_country_regions.csv")
-data_exp <- read.csv("D:/Tobackup/_hmcfw/PGR_interdependence/analysis/Origins_crops_diets/circos/FS/2016new/FS_items_country_regions.csv")
+data_exp <- read.csv(paste(work_dir, "/_outputs/circos/FS/FS_items_country_regions.csv", sep=''))
 
 data_country <- lapply(2009:2011,function(i)
 {
@@ -41,15 +42,15 @@ data_country <- merge(data_country2,data_country[[3]],by=c("Region_crops","Count
 names(data_country)[4:6] <- paste("Y",2009:2011,sep="")
 
 #write.csv(data_country, "F:/CIAT/Interdependence/crop_importance/circos/FS_sum_country_regions.csv", row.names=F)
-write.csv(data_country, "D:/Tobackup/_hmcfw/PGR_interdependence/analysis/Origins_crops_diets/circos/FS/2016new/FS_sum_country_regions.csv", row.names=F)
+write.csv(data_country, paste(work_dir, "/_outputs/circos/FS/FS_sum_country_regions.csv", sep=''), row.names=F)
 #note this file is perfect as is as per 2016_1_20 no update needed
 
 # Load data
 
 #data_country <- read.csv("F:/CIAT/Interdependence/crop_importance/circos/FS_sum_country_regions.csv")
-data_country <- read.csv("D:/Tobackup/_hmcfw/PGR_interdependence/analysis/Origins_crops_diets/circos/FS/2016new/FS_sum_country_regions.csv")
+data_country <- read.csv(paste(work_dir, "/_outputs/circos/FS/FS_sum_country_regions.csv", sep=''))
 #country_regions <- read.csv("F:/CIAT/Interdependence/crop_importance/circos/Countries_FS_2009-2011_data_regions_2015_3_24.csv")
-country_regions <- read.csv("D:/Tobackup/_hmcfw/PGR_interdependence/analysis/Origins_crops_diets/circos/FS/2016new/Countries_FS_2009-2011_data_regions_2016_1_20.csv")
+country_regions <- read.csv(paste(work_dir,"/_inputs/Countries_FS_2009-2011_data_regions_2016_1_20.csv",sep=''))
 #######note need to replace the above with "Countries_FS_2009-2011_data_regions_2016_1_20" that includes change to Occupied Palestinean Territories
 
 country_regions <- country_regions[,c("Country","Region")]
@@ -58,7 +59,7 @@ data_country <- data_country[which(data_country$Region_crops!="Not_Specified"),]
 
 #######could produce here an output file with merged countries, elements, summed values for years for each region_crops, and regions of countries. This should be ideal output file for circos at country level 
 #ck attempt immediately below- which works!
-write.csv(data_country, "D:/Tobackup/_hmcfw/PGR_interdependence/analysis/Origins_crops_diets/circos/FS/2016new/FS_sum_country_regions_cropregions.csv", row.names=F)
+write.csv(data_country, paste(work_dir,"/_outputs/circos/FS/FS_sum_country_regions_cropregions.csv", sep=''), row.names=F)
 
 ########
 
@@ -68,7 +69,7 @@ write.csv(data_country, "D:/Tobackup/_hmcfw/PGR_interdependence/analysis/Origins
 
 ## merge the countries using the weighted average of population
 
-popData <- read.csv("F:/CIAT/Interdependence/crop_importance/circos/Pop_177countriesFSandprod.csv")
+popData <- read.csv(paste(work_dir, "/_inputs/Pop_177countriesFSandprod.csv", sep=''))
 popData[,grep("Y",names(popData))] <- popData[,grep("Y",names(popData))]*1000
 popData$Unit <- NULL
 popData <- merge(popData,country_regions,by="Country")
@@ -164,9 +165,9 @@ for (coun in ucoun) {
   }
 }
 
-write.csv(cOrgData,paste("F:/CIAT/Interdependence/crop_importance/circos/Data_2009-2011_matrix_fixed-countries.csv",sep=""),quote=T,row.names=F)
+write.csv(cOrgData, paste(work_dir, "/_outputs/circos/FS/Data_2009-2011_matrix_fixed-countries.csv",sep=""), quote=T, row.names=F)
 
-cOrgData <- read.csv("F:/CIAT/Interdependence/crop_importance/circos/Data_2009-2011_matrix_fixed-countries.csv")
+cOrgData <- read.csv(paste(work_dir, "/_outputs/circos/FS/Data_2009-2011_matrix_fixed-countries.csv",sep=""))
 
 cOrgData_region <- lapply(2009:2011,function(i)
 {
@@ -177,7 +178,7 @@ cOrgData_region2 <- merge(cOrgData_region[[1]],cOrgData_region[[2]],by=c("Region
 cOrgData_region <- merge(cOrgData_region2,cOrgData_region[[3]],by=c("Region","Region_crops","Element")); rm(cOrgData_region2)
 names(cOrgData_region)[4:6] <- paste('Y',2009:2011,sep='')
 
-write.csv(cOrgData_region, "F:/CIAT/Interdependence/crop_importance/circos/regions_sourceofdiets.csv",row.names=FALSE)
+write.csv(cOrgData_region, paste(work_dir, "/_outputs/circos/FS/regions_sourceofdiets.csv", sep=''), row.names=FALSE)
 
 # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% #
 # Circos plot
@@ -187,8 +188,9 @@ options(warn=-1)
 library(circlize)
 library(plyr)
 
-cOrgData_region <- read.csv("F:/CIAT/Interdependence/crop_importance/circos/regions_sourceofdiets.csv")
-nice_regions <- read.csv("F:/CIAT/Interdependence/crop_importance/circos/Countries_FS_2009-2011_data_regions_2015_4_15.csv")
+work_dir <- 'C:/Users/haachicanoy/Documents/GitHub/interdependence_circos/_regions'
+cOrgData_region <- read.csv(paste(work_dir, "/_outputs/circos/FS/regions_sourceofdiets.csv", sep=''))
+nice_regions <- read.csv(paste(work_dir, "/_inputs/Countries_FS_2009-2011_data_regions_2016_1_20.csv", sep=''))
 #######note may need to replace the above with "Countries_FS_2009-2011_data_regions_2016_1_20" that includes change to Occupied Palestinean Territories; perhaps no need for change if just getting nice names here
 
 code_regions <- nice_regions[,c("Region","Region_code")]
@@ -214,45 +216,47 @@ cOrgData_region <- cOrgData_region[,c("R_origin","Rcode_origin","R_recipients","
 rownames(cOrgData_region) <- 1:nrow(cOrgData_region)
 cOrgData_region$Average <- as.vector(rowMeans(cOrgData_region[,paste('Y',2009:2011,sep='')]))
 
-cOrgData_region$R_recipients <- gsub(pattern='C Africa',replacement='C\nAfrica',cOrgData_region$R_recipients,fixed=TRUE)
-cOrgData_region$R_recipients <- gsub(pattern='C America',replacement='C\nAmerica',cOrgData_region$R_recipients,fixed=TRUE)
-cOrgData_region$R_recipients <- gsub(pattern='C Asia',replacement='C\nAsia',cOrgData_region$R_recipients,fixed=TRUE)
-cOrgData_region$R_recipients <- gsub(pattern='E Africa',replacement='E\nAfrica',cOrgData_region$R_recipients,fixed=TRUE)
-cOrgData_region$R_recipients <- gsub(pattern='E Asia',replacement='E\nAsia',cOrgData_region$R_recipients,fixed=TRUE)
-cOrgData_region$R_recipients <- gsub(pattern='N America',replacement='N\nAmerica',cOrgData_region$R_recipients,fixed=TRUE)
+cOrgData_region$R_recipients <- gsub(pattern='Central Africa',replacement='C\nAfrica',cOrgData_region$R_recipients,fixed=TRUE)
+cOrgData_region$R_recipients <- gsub(pattern='Central America',replacement='C\nAmerica',cOrgData_region$R_recipients,fixed=TRUE)
+cOrgData_region$R_recipients <- gsub(pattern='Central Asia',replacement='C\nAsia',cOrgData_region$R_recipients,fixed=TRUE)
+cOrgData_region$R_recipients <- gsub(pattern='East Africa',replacement='E\nAfrica',cOrgData_region$R_recipients,fixed=TRUE)
+cOrgData_region$R_recipients <- gsub(pattern='East Asia',replacement='E\nAsia',cOrgData_region$R_recipients,fixed=TRUE)
+cOrgData_region$R_recipients <- gsub(pattern='North America',replacement='N\nAmerica',cOrgData_region$R_recipients,fixed=TRUE)
 cOrgData_region$R_recipients <- gsub(pattern='NE Europe',replacement='NE\nEurope',cOrgData_region$R_recipients,fixed=TRUE)
 cOrgData_region$R_recipients <- gsub(pattern='NW Europe',replacement='NW\nEurope',cOrgData_region$R_recipients,fixed=TRUE)
-cOrgData_region$R_recipients <- gsub(pattern='S Africa',replacement='S\nAfrica',cOrgData_region$R_recipients,fixed=TRUE)
-cOrgData_region$R_recipients <- gsub(pattern='S Asia',replacement='S\nAsia',cOrgData_region$R_recipients,fixed=TRUE)
-cOrgData_region$R_recipients <- gsub(pattern='SE Asia',replacement='SE\nAsia',cOrgData_region$R_recipients,fixed=TRUE)
+cOrgData_region$R_recipients <- gsub(pattern='Southern Africa',replacement='S\nAfrica',cOrgData_region$R_recipients,fixed=TRUE)
+cOrgData_region$R_recipients <- gsub(pattern='South Asia',replacement='S\nAsia',cOrgData_region$R_recipients,fixed=TRUE)
+cOrgData_region$R_recipients <- gsub(pattern='Southeast Asia',replacement='SE\nAsia',cOrgData_region$R_recipients,fixed=TRUE)
 cOrgData_region$R_recipients <- gsub(pattern='SE Europe',replacement='SE\nEurope',cOrgData_region$R_recipients,fixed=TRUE)
 cOrgData_region$R_recipients <- gsub(pattern='SW Europe',replacement='SW\nEurope',cOrgData_region$R_recipients,fixed=TRUE)
-cOrgData_region$R_recipients <- gsub(pattern='W Africa',replacement='W\nAfrica',cOrgData_region$R_recipients,fixed=TRUE)
-cOrgData_region$R_recipients <- gsub(pattern='W Asia',replacement='W\nAsia',cOrgData_region$R_recipients,fixed=TRUE)
+cOrgData_region$R_recipients <- gsub(pattern='West Africa',replacement='W\nAfrica',cOrgData_region$R_recipients,fixed=TRUE)
+cOrgData_region$R_recipients <- gsub(pattern='West Asia',replacement='W\nAsia',cOrgData_region$R_recipients,fixed=TRUE)
 cOrgData_region$R_recipients <- gsub(pattern='Trop. S. America',replacement='Trop. S.\nAmerica',cOrgData_region$R_recipients,fixed=TRUE)
 cOrgData_region$R_recipients <- gsub(pattern='Temp. S. America',replacement='Temp. S.\nAmerica',cOrgData_region$R_recipients,fixed=TRUE)
 cOrgData_region$R_recipients <- gsub(pattern='SE Mediterranean',replacement='SE\nMediterranean',cOrgData_region$R_recipients,fixed=TRUE)
-cOrgData_region$R_recipients <- gsub(pattern='Aus-N Zealand',replacement='ANZ',cOrgData_region$R_recipients,fixed=TRUE)
+cOrgData_region$R_recipients <- gsub(pattern='Australia New Zealand',replacement='ANZ',cOrgData_region$R_recipients,fixed=TRUE)
+cOrgData_region$R_recipients <- gsub(pattern='Trop. Pacific Region',replacement='Pacific',cOrgData_region$R_recipients,fixed=TRUE)
 
-cOrgData_region$R_origin <- gsub(pattern='C Africa',replacement='C\nAfrica',cOrgData_region$R_origin,fixed=TRUE)
-cOrgData_region$R_origin <- gsub(pattern='C America',replacement='C\nAmerica',cOrgData_region$R_origin,fixed=TRUE)
-cOrgData_region$R_origin <- gsub(pattern='C Asia',replacement='C\nAsia',cOrgData_region$R_origin,fixed=TRUE)
-cOrgData_region$R_origin <- gsub(pattern='E Africa',replacement='E\nAfrica',cOrgData_region$R_origin,fixed=TRUE)
-cOrgData_region$R_origin <- gsub(pattern='E Asia',replacement='E\nAsia',cOrgData_region$R_origin,fixed=TRUE)
-cOrgData_region$R_origin <- gsub(pattern='N America',replacement='N\nAmerica',cOrgData_region$R_origin,fixed=TRUE)
+cOrgData_region$R_origin <- gsub(pattern='Central Africa',replacement='C\nAfrica',cOrgData_region$R_origin,fixed=TRUE)
+cOrgData_region$R_origin <- gsub(pattern='Central America',replacement='C\nAmerica',cOrgData_region$R_origin,fixed=TRUE)
+cOrgData_region$R_origin <- gsub(pattern='Central Asia',replacement='C\nAsia',cOrgData_region$R_origin,fixed=TRUE)
+cOrgData_region$R_origin <- gsub(pattern='East Africa',replacement='E\nAfrica',cOrgData_region$R_origin,fixed=TRUE)
+cOrgData_region$R_origin <- gsub(pattern='East Asia',replacement='E\nAsia',cOrgData_region$R_origin,fixed=TRUE)
+cOrgData_region$R_origin <- gsub(pattern='North America',replacement='N\nAmerica',cOrgData_region$R_origin,fixed=TRUE)
 cOrgData_region$R_origin <- gsub(pattern='NE Europe',replacement='NE\nEurope',cOrgData_region$R_origin,fixed=TRUE)
 cOrgData_region$R_origin <- gsub(pattern='NW Europe',replacement='NW\nEurope',cOrgData_region$R_origin,fixed=TRUE)
-cOrgData_region$R_origin <- gsub(pattern='S Africa',replacement='S\nAfrica',cOrgData_region$R_origin,fixed=TRUE)
-cOrgData_region$R_origin <- gsub(pattern='S Asia',replacement='S\nAsia',cOrgData_region$R_origin,fixed=TRUE)
-cOrgData_region$R_origin <- gsub(pattern='SE Asia',replacement='SE\nAsia',cOrgData_region$R_origin,fixed=TRUE)
+cOrgData_region$R_origin <- gsub(pattern='Southern Africa',replacement='S\nAfrica',cOrgData_region$R_origin,fixed=TRUE)
+cOrgData_region$R_origin <- gsub(pattern='South Asia',replacement='S\nAsia',cOrgData_region$R_origin,fixed=TRUE)
+cOrgData_region$R_origin <- gsub(pattern='Southeast Asia',replacement='SE\nAsia',cOrgData_region$R_origin,fixed=TRUE)
 cOrgData_region$R_origin <- gsub(pattern='SE Europe',replacement='SE\nEurope',cOrgData_region$R_origin,fixed=TRUE)
 cOrgData_region$R_origin <- gsub(pattern='SW Europe',replacement='SW\nEurope',cOrgData_region$R_origin,fixed=TRUE)
-cOrgData_region$R_origin <- gsub(pattern='W Africa',replacement='W\nAfrica',cOrgData_region$R_origin,fixed=TRUE)
-cOrgData_region$R_origin <- gsub(pattern='W Asia',replacement='W\nAsia',cOrgData_region$R_origin,fixed=TRUE)
+cOrgData_region$R_origin <- gsub(pattern='West Africa',replacement='W\nAfrica',cOrgData_region$R_origin,fixed=TRUE)
+cOrgData_region$R_origin <- gsub(pattern='West Asia',replacement='W\nAsia',cOrgData_region$R_origin,fixed=TRUE)
 cOrgData_region$R_origin <- gsub(pattern='Trop. S. America',replacement='Trop. S.\nAmerica',cOrgData_region$R_origin,fixed=TRUE)
 cOrgData_region$R_origin <- gsub(pattern='Temp. S. America',replacement='Temp. S.\nAmerica',cOrgData_region$R_origin,fixed=TRUE)
 cOrgData_region$R_origin <- gsub(pattern='SE Mediterranean',replacement='SE\nMediterranean',cOrgData_region$R_origin,fixed=TRUE)
-cOrgData_region$R_origin <- gsub(pattern='Aus-N Zealand',replacement='ANZ',cOrgData_region$R_origin,fixed=TRUE)
+cOrgData_region$R_origin <- gsub(pattern='Australia New Zealand',replacement='ANZ',cOrgData_region$R_origin,fixed=TRUE)
+cOrgData_region$R_origin <- gsub(pattern='Trop. Pacific Region',replacement='Pacific',cOrgData_region$R_origin,fixed=TRUE)
 
 umeas <- sort(as.character(unique(cOrgData_region$Element)))
 measList <- c("fat","calories","food_weight","protein")
@@ -287,15 +291,15 @@ lapply(1:length(umeas),function(i)
   #   set.seed(1235)
   #   colors <- sample(colors$rgb,size=23,replace=FALSE)
   
-  df1 <- data.frame(order=order.regions,region=destiny)
+  df1 <- data.frame(order=order.regions, region=destiny)
   library("plyr")
   df1 <- df1[order(df1$order),]
   rownames(df1) <- 1:nrow(df1)
   
   levels.regions <- as.character(df1$region)
-  origin_regions <- origin_regions[levels.regions,levels.regions]
+  origin_regions <- origin_regions[levels.regions, levels.regions]
   
-  write.csv(origin_regions,paste("F:/CIAT/Interdependence/crop_importance/circos/inputs_circos/interchange_",measList[[i]],"_2009-2011.csv"),row.names=TRUE)
+  write.csv(origin_regions, paste(work_dir, "/_outputs/circos/FS/interchange_", measList[[i]], "_2009-2011.csv", sep=''), row.names=TRUE)
   
   origin_regions <- round(origin_regions,1)
   
@@ -315,7 +319,7 @@ lapply(1:length(umeas),function(i)
   df1$region <- factor(df1$region, levels=df1$region)
   n <- nrow(df1)
   # Include RGB color
-  colors <- read.csv("F:/CIAT/Interdependence/crop_importance/circos/inputs_circos/id_colors_regions.csv")
+  colors <- read.csv(paste(work_dir, "/_inputs/id_colors_regions.csv", sep=''))
   colors <- colors[,c("Region","r","g","b")]
   names(colors)[1] <- "region"
   
@@ -427,7 +431,7 @@ lapply(1:length(umeas),function(i)
   df2<-arrange(df2,desc(origin_regions))
   
   #keep only the largest flows to avoid clutter
-  df2<-subset(df2, origin_regions>quantile(origin_regions,0.95))
+  # df2<-subset(df2, origin_regions>quantile(origin_regions,0.95))
   df2$orig <- gsub(pattern='_',replacement=' ',df2$orig)
   df2$dest <- gsub(pattern='_',replacement=' ',df2$dest)
   
@@ -446,6 +450,6 @@ lapply(1:length(umeas),function(i)
     df1$sum2[n] = df1$sum2[n] + abs(origin_regions[m, n])
   }
   
-  dev.copy2pdf(file=paste("interchange_",measList[[i]],"_2009-2011_95.pdf",sep=""), height=10, width=10)
+  dev.copy2pdf(file=paste(work_dir, "/_figures/interchange_", measList[[i]], "_2009-2011_all.pdf", sep=""), height=10, width=10)
   
 })
