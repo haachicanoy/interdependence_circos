@@ -7,10 +7,10 @@
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#
 
 # Load data
-work_dir = "F:/CIAT/Interdependence/production_data/by_quantity"
-main_data_set <- read.csv(paste(work_dir, "/outputs_merged/quantity_2009-2011_mean_mc_fm_selcom_selcoun.csv", sep=""), header=T)
-ctry_data_set <- read.csv(paste(work_dir, "/Countries_FS_2009-2011_data_regions_2015_3_24.csv", sep=""), header=T)
-comm_data_set <- read.csv("F:/CIAT/Interdependence/scripts/interdependence_prod_bayesian/Item_region_production_2015_2_12.csv", header=T)
+work_dir <- "C:/Users/haachicanoy/Documents/GitHub/interdependence_circos/_production_systems/_macro"
+main_data_set <- read.csv(paste(work_dir, "/_inputs/quantity_2009-2011_mean_mc_fm_selcom_selcoun.csv", sep=""), header=T)
+ctry_data_set <- read.csv(paste(work_dir, "/_inputs/Countries_FS_2009-2011_data_regions_2016_1_20.csv", sep=""), header=T)
+comm_data_set <- read.csv(paste(work_dir, "/_inputs/Item_region_production_2015_2_12.csv", sep=''), header=T)
 
 dim(main_data_set)
 dim(ctry_data_set)
@@ -51,7 +51,7 @@ for(i in 1:length(element)){
   
 }
 
-write.csv(summary_results[[1]], paste("F:/CIAT/Interdependence/scripts/interdependence_prod_bayesian/production_data/by_quantity/results_dependence/Total_summary_db.csv", sep=""), row.names=F)
+write.csv(summary_results[[1]], paste(work_dir, "/_outputs/by_quantity/results_dependence/Total_summary_db.csv", sep=""), row.names=F)
 
 # Merge information of Main data set and Regions and crops (test1)
 test <- merge(main_data_set, ctry_data_set, by=c("Country"))
@@ -60,7 +60,7 @@ rownames(test1) <- 1:nrow(test1)
 
 test1[is.na(test1)] <- 0
 
-write.csv(test1, paste("F:/CIAT/Interdependence/scripts/interdependence_prod_bayesian/production_data/by_quantity/prod_countries_regions_all_merge.csv",sep=""), row.names=F)
+write.csv(test1, paste(work_dir, "/_outputs/by_quantity/prod_countries_regions_all_merge.csv",sep=""), row.names=F)
 
 # Remove data not for use (test2)
 

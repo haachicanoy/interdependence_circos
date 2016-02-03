@@ -178,7 +178,7 @@ test2 <- read.csv(paste(work_dir, "/_outputs/by_area/prod_countries_regions_all_
 
 test4 <- test2[test2$Region_crops=="Not_Specified",]
 rownames(test4) <- 1:nrow(test4)
-write.csv(test4, paste("F:/CIAT/Interdependence/scripts/interdependence_prod_bayesian/production_data/by_area/prod_countries_notspecified.csv",sep=""), row.names=F)
+write.csv(test4, paste(work_dir, "/_outputs/by_area/prod_countries_notspecified.csv",sep=""), row.names=F)
 
 nspecified_results <- list(0)
 for(i in 1:length(element)){
@@ -209,11 +209,11 @@ for(i in 1:length(element)){
   
 }
 
-write.csv(nspecified_results[[1]], paste("F:/CIAT/Interdependence/scripts/interdependence_prod_bayesian/production_data/by_area/results_dependence/Total_nspecified.csv", sep=""), row.names=F)
+write.csv(nspecified_results[[1]], paste(work_dir, "/_outputs/by_area/results_dependence/Total_nspecified.csv", sep=""), row.names=F)
 
 # Read Not specified data
 
-nspecified_results <- read.csv(paste("F:/CIAT/Interdependence/scripts/interdependence_prod_bayesian/production_data/by_area/results_dependence/Total_nspecified.csv", sep=""))
+nspecified_results <- read.csv(paste(work_dir, "/_outputs/by_area/results_dependence/Total_nspecified.csv", sep=""))
 
 # Calculate percent of Not_specify
 
@@ -254,7 +254,7 @@ for(i in 1:length(element)){
   
 }
 
-write.csv(percent_nspecified_results[[1]], paste("F:/CIAT/Interdependence/scripts/interdependence_prod_bayesian/production_data/by_area/results_dependence/Nspecified_percent.csv", sep=""), row.names=F)
+write.csv(percent_nspecified_results[[1]], paste(work_dir, "/_outputs/by_area/results_dependence/Nspecified_percent.csv", sep=""), row.names=F)
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#
 ### Calculate minimum dependence
@@ -262,7 +262,7 @@ write.csv(percent_nspecified_results[[1]], paste("F:/CIAT/Interdependence/script
 
 # Read Not_specified percent data
 
-percent_nspecified_results <- read.csv(paste("F:/CIAT/Interdependence/scripts/interdependence_prod_bayesian/production_data/by_area/results_dependence/Nspecified_percent.csv", sep=""))
+percent_nspecified_results <- read.csv(paste(work_dir, "/_outputs/by_area/results_dependence/Nspecified_percent.csv", sep=""))
 
 # Calculate percent of Not_specify
 
@@ -297,81 +297,18 @@ for(i in 1:length(element)){
   
 }
 
-write.csv(min_dependence_results[[1]], paste("F:/CIAT/Interdependence/scripts/interdependence_prod_bayesian/production_data/by_area/results_dependence/Minimum_dependence.csv", sep=""), row.names=F)
+write.csv(min_dependence_results[[1]], paste(work_dir, "/_outputs/by_area/results_dependence/Minimum_dependence.csv", sep=""), row.names=F)
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#
 # Put maximum and minimum together
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#
 
-dep_dir <- "F:/CIAT/Interdependence/scripts/interdependence_prod_bayesian/production_data/by_area/results_dependence"
-
-max_dep_files <- read.csv(paste(dep_dir, "/Maximum_dependence.csv", sep=""))
-min_dep_files <- read.csv(paste(dep_dir, "/Minimum_dependence.csv", sep=""))
+max_dep_files <- read.csv(paste(work_dir, "/_outputs/by_area/results_dependence/Maximum_dependence.csv", sep=""))
+min_dep_files <- read.csv(paste(work_dir, "/_outputs/by_area/results_dependence/Minimum_dependence.csv", sep=""))
 
 names(max_dep_files)[1:3] <- paste0("max_",names(max_dep_files)[1:3])
 names(min_dep_files)[1:3] <- paste0("min_",names(min_dep_files)[1:3])
 
 combined <- merge(max_dep_files, min_dep_files, by="Country")
 
-write.csv(combined, "F:/CIAT/Interdependence/scripts/interdependence_prod_bayesian/production_data/by_area/results_dependence/combined_dependence_area.csv", row.names=F)
-
-##below is not updated
-
-data_regions <- read.csv("F:/CIAT/Interdependence/production_data/Countries_FS_2009-2011_data_regions_2014_9_19.csv", header=T)
-dep_files_merged <- merge(dep_files, data_regions, by="Country")
-write.csv(dep_files_merged, paste("F:/CIAT/Interdependence/production_data/by_area/results_dependence/combined_dependence_regions.csv", sep=""), row.names=F)
-
-dep_files_merged$Rest <- 1-dep_files_merged$max
-dep_files_merged <- dep_files_merged[,c("Country", "max", "min", "Diff", "Rest", "Type", "Region", "Region_macro1", "Region_macro2", "Region_macro3")]
-write.csv(dep_files_merged, paste("F:/CIAT/Interdependence/production_data/by_area/results_dependence/combined_dependence_regions_final.csv", sep=""), row.names=F)
-
-dep_files_merged <- read.csv(paste("F:/CIAT/Interdependence/production_data/by_area/results_dependence/combined_dependence_regions_final.csv", sep=""))
-plt_files <- dep_files_merged[,c("Country", "min", "Diff", "Rest")]
-
-library(ggplot2)
-library(reshape)
-
-makeTransparent = function(..., alpha=0.2) {
-  
-  if(alpha<0 | alpha>1) stop("alpha must be between 0 and 1")
-  
-  alpha = floor(255*alpha)  
-  newColor = col2rgb(col=unlist(list(...)), alpha=FALSE)
-  
-  .makeTransparent = function(col, alpha) {
-    rgb(red=col[1], green=col[2], blue=col[3], alpha=alpha, maxColorValue=255)
-  }
-  
-  newColor = apply(newColor, 2, .makeTransparent, alpha=alpha)
-  
-  return(newColor)
-  
-}
-
-data <- as.data.frame(unique(plt_files))
-data$Country <- reorder(data$Country, -data$min)
-md <- melt(data, id=(c("Country")))
-
-p <- ggplot(data=md, aes(x=Country, y=value*100, fill=variable))
-p <- p + geom_bar(stat="identity")
-p <- p + scale_fill_manual(breaks=c("Minimum dependence","Uncertainty","Indepedence"),
-                           labels=c("Minimum dependence","Uncertainty","Indepedence"),
-                           values=c("brown1","indianred2",makeTransparent("tan1")))
-p <- p + xlab("") + ylab("Percent dependence (%)") + ggtitle("Percent of harvested area of nationally produced food crops\nsourcing from crops of non-native regions of primary diversity")
-p <- p + scale_y_continuous(expand=c(0,0.01))
-p <- p + theme_bw()
-p <- p + theme(panel.grid.major.x = element_blank(),
-               panel.grid.minor.x = element_blank(),
-               panel.grid.major.y = element_blank(),
-               panel.grid.minor.y = element_blank(),
-               axis.text.x = element_text(size=3,angle=90,hjust=1,face="italic"), #angle=60
-               axis.text.y = element_text(size=5),
-               axis.title.x = element_text(face="bold",size=6),
-               axis.title.y = element_text(face="bold",size=6),
-               legend.text = element_text(size=3),
-               legend.title = element_text(face="bold",size=3),
-               plot.title = element_text(face="bold", size=8))
-p <- p + labs(fill="")
-p
-ggsave(filename=paste("F:/CIAT/Interdependence/figures/production/production_area_dependence_by_countries.pdf", sep=""), plot=p, width=6, height=4)
-
+write.csv(combined, paste(work_dir, "/_outputs/by_area/results_dependence/combined_dependence_area.csv", sep=''), row.names=F)
