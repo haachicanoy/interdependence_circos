@@ -51,7 +51,7 @@ for(i in 1:length(element)){
   
 }
 
-write.csv(summary_results[[1]], paste("F:/CIAT/Interdependence/scripts/interdependence_prod_bayesian/production_data/by_area/results_dependence/Total_summary_db.csv", sep=""), row.names=F)
+write.csv(summary_results[[1]], paste(work_dir, "/_outputs/by_area/results_dependence/Total_summary_db.csv", sep=""), row.names=F)
 
 # Merge information of Main data set and Regions and crops (test1)
 test <- merge(main_data_set, ctry_data_set, by=c("Country"))
@@ -60,7 +60,7 @@ rownames(test1) <- 1:nrow(test1)
 
 test1[is.na(test1)] <- 0
 
-write.csv(test1, paste("F:/CIAT/Interdependence/scripts/interdependence_prod_bayesian/production_data/by_area/prod_countries_regions_all_merge.csv",sep=""), row.names=F)
+write.csv(test1, paste(work_dir, "/_outputs/by_area/prod_countries_regions_all_merge.csv",sep=""), row.names=F)
 
 # Remove data not for use (test2)
 
@@ -81,7 +81,7 @@ test2$Region_crops <- as.character(test2$Region_crops)
 
 test3 <- test2[which(test2$Region==test2$Region_crops),]
 rownames(test3) <- 1:nrow(test3)
-write.csv(test3, paste("F:/CIAT/Interdependence/scripts/interdependence_prod_bayesian/production_data/by_area/prod_countries_regions_dupregionscrops.csv",sep=""), row.names=F)
+write.csv(test3, paste(work_dir, "/_outputs/by_area/prod_countries_regions_dupregionscrops.csv",sep=""), row.names=F)
 
 # Calculate sums of crop quantities native to country
 
@@ -118,14 +118,14 @@ for(i in 1:length(element)){
   
 }
 
-write.csv(dependence_results[[1]], paste("F:/CIAT/Interdependence/scripts/interdependence_prod_bayesian/production_data/by_area/results_dependence/Total_native.csv", sep=""), row.names=F)
+write.csv(dependence_results[[1]], paste(work_dir, "/_outputs/by_area/results_dependence/Total_native.csv", sep=""), row.names=F)
 
 ## Read db summary
-summary_results <- read.csv(paste("F:/CIAT/Interdependence/scripts/interdependence_prod_bayesian/production_data/by_area/results_dependence/Total_summary_db.csv", sep=""))
+summary_results <- read.csv(paste(work_dir, "/_outputs/by_area/results_dependence/Total_summary_db.csv", sep=""))
 country <- sort(as.character(unique(summary_results$Country)))
 
 ## Read maximum dependence data
-dependence_results <- read.csv(paste("F:/CIAT/Interdependence/scripts/interdependence_prod_bayesian/production_data/by_area/results_dependence/Total_native.csv", sep=""))
+dependence_results <- read.csv(paste(work_dir, "/_outputs/by_area/results_dependence/Total_native.csv", sep=""))
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#
 ### Calculate maximum dependence
@@ -170,11 +170,11 @@ for(i in 1:length(element)){
   
 }
 
-write.csv(max_dependence_results[[1]], paste("F:/CIAT/Interdependence/scripts/interdependence_prod_bayesian/production_data/by_area/results_dependence/Maximum_dependence.csv", sep=""), row.names=F)
+write.csv(max_dependence_results[[1]], paste(work_dir, "/_outputs/by_area/results_dependence/Maximum_dependence.csv", sep=""), row.names=F)
 
 # Calculate contribution of all commodities where region = "Not_Specified"
 
-test2 <- read.csv(paste("F:/CIAT/Interdependence/scripts/interdependence_prod_bayesian/production_data/by_area/prod_countries_regions_all_merge.csv",sep=""), header=T)
+test2 <- read.csv(paste(work_dir, "/_outputs/by_area/prod_countries_regions_all_merge.csv",sep=""), header=T)
 
 test4 <- test2[test2$Region_crops=="Not_Specified",]
 rownames(test4) <- 1:nrow(test4)
