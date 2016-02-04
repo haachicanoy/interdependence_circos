@@ -59,6 +59,7 @@ library(jsonlite)
 # Matrix should have macro regions and regions. All flows should be in the same table.
 work_dir <- 'C:/Users/haachicanoy/Documents/GitHub/interdependence_circos'
 flows <- list.files(path=paste(work_dir, '/_interactive/_flows_matrix/fs_without_hierarchical_level', sep=''), pattern='.csv$', full.names=TRUE)
+flows <- flows[c(1,4,2,3)]
 flowsFiles <- lapply(flows, function(x)
 {
   z <- read.csv(x); rownames(z) <- z[,1]; z <- z[,-1]
@@ -86,13 +87,14 @@ mat.labels <- rownames(flowsFiles[[1]])
 
 # {matrix} for JSON file
 matrices <- lapply(flowsFiles, as.matrix)
-names(matrices) <- c('calories','fat','food_weight','protein')
+names(matrices) <- c('calories','protein','fat','food_weight')
 
 # {regions} for JSON file
 regions <- setdiff(1:length(mat.labels),grep(pattern='*_rep$', x=mat.labels)) - 1
 
 # Redo {names} for JSON file
 mat.labels <- gsub(pattern='*_rep$', replacement='', x=mat.labels)
+mat.labels <- gsub(pattern='\n', replacement='<br />', x=mat.labels)
 
 ### Making JSON file
 
@@ -118,6 +120,7 @@ library(jsonlite)
 # Matrix should have macro regions and regions. All flows should be in the same table.
 work_dir <- 'C:/Users/haachicanoy/Documents/GitHub/interdependence_circos'
 flows <- list.files(path=paste(work_dir, '/_interactive/_flows_matrix/prod_without_hierarchical_level', sep=''), pattern='.csv$', full.names=TRUE)
+flows <- flows[c(2,1,3)]
 flowsFiles <- lapply(flows, function(x)
 {
   z <- read.csv(x); rownames(z) <- z[,1]; z <- z[,-1]
@@ -145,13 +148,14 @@ mat.labels <- rownames(flowsFiles[[1]])
 
 # {matrix} for JSON file
 matrices <- lapply(flowsFiles, as.matrix)
-names(matrices) <- c('harvested area','production quantity','production value')
+names(matrices) <- c('production quantity','harvested area','production value')
 
 # {regions} for JSON file
 regions <- setdiff(1:length(mat.labels),grep(pattern='*_rep$', x=mat.labels)) - 1
 
 # Redo {names} for JSON file
 mat.labels <- gsub(pattern='*_rep$', replacement='', x=mat.labels)
+mat.labels <- gsub(pattern='\n', replacement='<br />', x=mat.labels)
 
 ### Making JSON file
 
