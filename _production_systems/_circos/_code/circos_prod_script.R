@@ -62,6 +62,11 @@ country_regions <- country_regions[,c("Country","Region")]
 data_country <- merge(data_country,country_regions,by="Country")
 data_country <- data_country[which(data_country$Region_crops!="Not_Specified"),]
 
+#######could produce here an output file with merged countries, elements, summed values for years for each region_crops, and regions of countries. This should be ideal output file for circos at country level 
+#ck attempt immediately below- which works!
+write.csv(data_country, paste(work_dir, "/_circos/Prod/Prod_sum_country_regions_cropregions.csv", sep=''), row.names=F)
+
+
 data_country <- lapply(2009:2011,function(i)
 {
   library(dplyr)
