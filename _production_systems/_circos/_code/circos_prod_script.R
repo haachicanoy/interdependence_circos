@@ -191,7 +191,7 @@ lapply(1:length(umeas),function(i)
   levels.regions <- as.character(df1$region)
   origin_regions <- origin_regions[levels.regions,levels.regions]
   
-  write.csv(origin_regions,paste("F:/CIAT/Interdependence/crop_importance/circos/inputs_circos/production/interchange_",measList[[i]],"_2009-2011.csv"),row.names=TRUE)
+  write.csv(origin_regions, paste(work_dir, "/_circos/Prod/interchange_", measList[[i]], "_2009-2011.csv", sep=''),row.names=TRUE)
   
   origin_regions <- as.matrix(origin_regions)
   dimnames(origin_regions)<-list(orig=levels.regions,dest=levels.regions)
@@ -213,12 +213,12 @@ lapply(1:length(umeas),function(i)
   df1$region <- factor(df1$region, levels=df1$region)
   n <- nrow(df1)
   # Include RGB color
-  colors <- read.csv("F:/CIAT/Interdependence/crop_importance/circos/inputs_circos/id_colors_regions.csv")
+  colors <- read.csv(paste(work_dir, "/_interdependence_analysis/_inputs/id_colors_regions.csv", sep=''))
   colors <- colors[,c("Region","r","g","b")]
   names(colors)[1] <- "region"
   
-  colors$region <- gsub(pattern='Caribbean',replacement='Car',colors$region,fixed=TRUE)
-  colors$region <- gsub(pattern='Pacific',replacement='Pac',colors$region,fixed=TRUE)
+  #colors$region <- gsub(pattern='Caribbean',replacement='Car',colors$region,fixed=TRUE)
+  #colors$region <- gsub(pattern='Pacific',replacement='Pac',colors$region,fixed=TRUE)
   colors$region <- gsub(pattern='C Africa',replacement='C\nAfrica',colors$region,fixed=TRUE)
   colors$region <- gsub(pattern='C America',replacement='C\nAmerica',colors$region,fixed=TRUE)
   colors$region <- gsub(pattern='C Asia',replacement='C\nAsia',colors$region,fixed=TRUE)
@@ -322,7 +322,7 @@ lapply(1:length(umeas),function(i)
   df2<-arrange(df2,desc(origin_regions))
   
   #keep only the largest flows to avoid clutter
-  df2<-subset(df2, origin_regions>quantile(origin_regions,0.97))
+  # df2<-subset(df2, origin_regions>quantile(origin_regions,0.97))
   df2$orig <- gsub(pattern='_',replacement=' ',df2$orig)
   df2$dest <- gsub(pattern='_',replacement=' ',df2$dest)
   
@@ -341,6 +341,6 @@ lapply(1:length(umeas),function(i)
     df1$sum2[n] = df1$sum2[n] + abs(origin_regions[m, n])
   }
   
-  dev.copy2pdf(file=paste("interchange_production_",measList[[i]],"_2009-2011_99.pdf",sep=""), height=10, width=10)
+  dev.copy2pdf(file=paste(work_dir, "/_circos/_figures/interchange_production_", measList[[i]], "_2009-2011_all.pdf",sep=""), height=10, width=10)
   
 })
