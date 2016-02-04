@@ -94,7 +94,7 @@ regions <- setdiff(1:length(mat.labels),grep(pattern='*_rep$', x=mat.labels)) - 
 
 # Redo {names} for JSON file
 mat.labels <- gsub(pattern='*_rep$', replacement='', x=mat.labels)
-mat.labels <- gsub(pattern='\n', replacement='<br />', x=mat.labels)
+# mat.labels <- gsub(pattern='\n', replacement='<br />', x=mat.labels)
 
 ### Making JSON file
 
@@ -155,7 +155,7 @@ regions <- setdiff(1:length(mat.labels),grep(pattern='*_rep$', x=mat.labels)) - 
 
 # Redo {names} for JSON file
 mat.labels <- gsub(pattern='*_rep$', replacement='', x=mat.labels)
-mat.labels <- gsub(pattern='\n', replacement='<br />', x=mat.labels)
+# mat.labels <- gsub(pattern='\n', replacement='<br />', x=mat.labels)
 
 ### Making JSON file
 
