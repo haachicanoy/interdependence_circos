@@ -39,109 +39,39 @@ library(dplyr)
 popData <- read.csv(paste(work_dir, "/_inputs/Pop_177countriesFSandprod.csv", sep=''))
 popData[,grep("Y",names(popData))] <- popData[,grep("Y",names(popData))]*1000
 popData <- popData[,c('Country','Yaverage')]
-popData <- merge(popData, fs_data_elements[,c('Country','Region')], by.x='Country')
+popData <- unique(merge(popData, fs_data_elements[,c('Country','Region')], by.x='Country')); rownames(popData) <- 1:nrow(popData)
 
-cOrgData <- data_country
-names(cOrgData)[4:5] <- c('R_origin','R_recipients')
-rownames(cOrgData) <- 1:nrow(cOrgData)
-
-elements <- sort(as.character(unique(cOrgData$Element)))
-lapply(1:length(elements), function(i)
+all_elements <- lapply(1:length(fmeas), function(i) # Measurement filter
 {
-  elemData <- cOrgData[which(cOrgData$Element==elements[[i]]),]
-  r_recipients <- sort(as.character(unique(elemData$R_recipients)))
-  lapply(1:length(r_recipients), function(j)
-  {
-    reciData <- elemData[which(elemData$R_recipients==r_recipients[[j]]),]
-    items <- sort(as.character(unique(reciData$Item)))
-    
-    totpop_reg <- sum(popData$Yaverage[popData$Region==r_recipients[[j]]], na.rm=TRUE)
-    
-    lapply(1:length(items), function(k)
-    {
-      itemData <- reciData[which(reciData$Item==items[[k]]),]
-      
-    })
-  })
-})
-
-for (coun in ucoun) {
-  #coun <- ucoun[1]
-  cat("Country:", paste(coun), "\n")
-  counData <- data_country[which(data_country$Country==paste(coun)),]
-  rownames(counData) <- 1:nrow(counData)
-  umeas <- sort(as.character(unique(data_country$Element)))
   
-  for (meas in umeas) {
-    # meas <- umeas[1]
-    cat("Measurement:", paste(meas), "\n")
-    measData <- counData[which(counData$Element==paste(meas)),]
-    rownames(measData) <- 1:nrow(measData)
-    uitem <- sort(as.character(unique(measData$Item)))
+  measData <- fs_data_elements[which(fs_data_elements$Element==fmeas[[i]]),]
+  regions <- sort(as.character(unique(measData$Region)))
+  
+  regionsInfo <- lapply(1:length(regions), function(j) # Region filter
+  {
+    regData <- measData[which(measData$Region==regions[[j]]),]
+    items <- sort(as.character(unique(regData$Item)))
     
-    for (reg in ureg) {
-      
-      itemData <- measData[which(measData$Item==paste(it)),]
-      #comm <- ucomm[145]
-      #cat("Commodity:",paste(comm),"\n")
-      regData <- measData[which(measData$Region_crops==paste(reg)),]
-      iniCol <- grep(paste("Y",iniYear,sep=""),names(regData))
-      finCol <- grep(paste("Y",endYear,sep=""),names(regData))
-      if (nrow(regData)==0) {regData[1,iniCol:finCol] <- NA; ismissing<-T} else {ismissing <- F}
-      k <- data.frame(YEAR=seq(iniYear,endYear,by=1),VALUE=as.numeric(t(regData[,iniCol:finCol])))
-      names(k) <- c("YEAR",paste(coun))
-      k <- unique(k)
-      
-      wnames <- popData[which(popData$Country==paste(coun)),]
-      wnames <- sort(as.character(unique(wnames$Country))) # Revisar!!!
-      
-      mergeSel <- popData[which(popData$Country==paste(coun)),]
-      
-      minYear <- iniYear
-      maxYear <- endYear
-      
-      #loop through years that need population data to be merged
-      for (yr in minYear:maxYear) {
-        #yr <- (minYear:maxYear)[1]
-        #totpop <- sum(as.numeric(popSelData[which(popSelData$YEAR == yr),3:ncol(popSelData)]),na.rm=T)
-        totval <- 0
-        for (wname in wnames) {
-          
-          dta <- k[which(k$YEAR==yr),paste(wname)]
-          eval(parse(text=paste('pop <- mergeSel$Y',yr,sep='')))
-          pop <- unique(pop)
-          totpop <- popData_region[which(popData_region$Region==as.character(mergeSel$Region)[1]),paste('Y',yr,sep='')]
-          
-          if (is.na(dta)) {dta <- 0}
-          if (is.na(pop)) {pop <- 0}
-          
-          val <- (dta*pop)/totpop
-          
-          if (wname==wnames[1]) {
-            totval <- val
-          } else {
-            totval <- totval+val
-          }
-          
-        }
-        k[which(k$YEAR==yr),paste(coun)] <- totval
-      }
-      
-      outrow <- regData
-      outrow[,iniCol:finCol] <- k[,paste(coun)]
-      outrow$Country <- coun
-      outrow$Element <- meas
-      outrow$Region_crops <- reg
-      
-      if (ismissing) {
-        cOrgData <- rbind(cOrgData,outrow)
-      } else {
-        cOrgData[which(cOrgData$Country == paste(coun)
-                       & cOrgData$Region_crops == paste(reg)
-                       & cOrgData$Element == paste(meas)),iniCol:finCol] <- k[,paste(coun)]
-      }
-    }
-  }
-}
-
+    totpop_reg <- sum(popData$Yaverage[popData$Region==regions[[j]]], na.rm=TRUE)
+    
+    itemInfo <- lapply(1:length(items), function(k)
+    {
+      itemData <- regData[which(regData$Item==items[[k]]),]
+      aux_coun <- as.character(itemData$Country)
+      grep2 <- Vectorize(grep, vectorize.args='pattern')
+      popCoun  <- popData$Yaverage[unlist(lapply(grep2(pattern=aux_coun, x=popData$Country, fixed=TRUE), function(x){z <- x[[1]]; return(z)}))]
+      avg <- sum(itemData$Average*popCoun, na.rm=TRUE)/totpop_reg
+      tb_item <- data.frame(item=items[[k]], Average=avg)
+      return(tb_item)
+    })
+    itemInfo <- Reduce(function(...) rbind(..., deparse.level=1), itemInfo)
+    itemInfo$Region <- paste(regions[[j]])
+    return(itemInfo)
+  })
+  regionsInfo <- Reduce(function(...) rbind(..., deparse.level=1), regionsInfo)
+  regionsInfo$Element <- fmeas[[i]]
+  return(regionsInfo)
+})
+all_elements <- Reduce(function(...) rbind(..., deparse.level=1), all_elements)
+write.csv(all_elements, paste('C:/Users/haachicanoy/Documents/GitHub/interdependence_circos/_interactive/_useful_info/fs_average_diet_regions.csv', sep=''), row.names=FALSE)
 
