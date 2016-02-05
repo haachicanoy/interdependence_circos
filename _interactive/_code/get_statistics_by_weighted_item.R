@@ -14,7 +14,7 @@ fcoun <- as.character(unique(fs_data_elements$Country))
 
 library(dplyr)
 
-# Average of population by country
+# Step 1: Average of population by country
 
 popData <- read.csv(paste(work_dir, "/_inputs/Pop_177countriesFSandprod.csv", sep=''))
 popData[,grep("Y",names(popData))] <- popData[,grep("Y",names(popData))]*1000
@@ -54,3 +54,15 @@ all_elements <- lapply(1:length(fmeas), function(i) # Measurement filter
 })
 all_elements <- Reduce(function(...) rbind(..., deparse.level=1), all_elements)
 write.csv(all_elements, paste('C:/Users/haachicanoy/Documents/GitHub/interdependence_circos/_interactive/_useful_info/fs_average_diet_regions.csv', sep=''), row.names=FALSE)
+
+# Step 2: Include crop origin regions
+
+work_dir <-'C:/Users/haachicanoy/Documents/GitHub/interdependence_circos'
+all_elements <- read.csv(paste(work_dir, '/_interactive/_useful_info/fs_average_diet_regions.csv', sep=''))
+names(all_elements)[1] <- 'Item'
+food_regions <- read.csv(paste(work_dir, '/_regions/_inputs/FS_Items_regions_2015_4_15.csv', sep=''))
+food_regions <- food_regions[,c('Item', 'Region')]
+names(food_regions)[2] <- 'Region_crops'
+
+all_elements <- merge(all_elements, food_regions, by='Item')
+write.csv(all_elements, paste(work_dir, '/_interactive/_useful_info/fs_average_diet_regions_and_origins.csv', sep=''), row.names=FALSE)
