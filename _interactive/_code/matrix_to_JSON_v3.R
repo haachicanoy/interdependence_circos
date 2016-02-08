@@ -2,8 +2,6 @@
 # H. Achicanoy & C. Khoury
 # CIAT, 2016
 
-library(jsonlite)
-
 work_dir <-'C:/Users/haachicanoy/Documents/GitHub/interdependence_circos'
 all_elements <- read.csv(paste(work_dir, '/_interactive/_useful_info/fs_average_diet_regions_and_origins.csv', sep=''))
 all_elements <- all_elements[,c('Element','Item','Average','Region_crops','Region')]
@@ -43,12 +41,13 @@ top5_element <- lapply(1:length(fmeas), function(i)
 })
 top5_element <- Reduce(function(...) rbind(..., deparse.level=1), top5_element)
 
-write.csv(top5_element, paste(work_dir, '/_interactive/_useful_info/most_important_crop_flows.csv', sep=''), row.names=FALSE)
+write.csv(top5_element, paste(work_dir, '/_interactive/_useful_info/most_important_fs_crop_flows.csv', sep=''), row.names=FALSE)
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= #
 # Food supplies without hierarchical level
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= #
 
+options(warn=-1)
 library(jsonlite)
 
 ### Load flow matrix
@@ -77,7 +76,108 @@ flowsFiles <- lapply(flows, function(x)
   return(zFinal)
 })
 
+### Support information files
+
+# Data Frame with all posible combinations
+all_elements <- read.csv(paste(work_dir, '/_interactive/_useful_info/fs_average_diet_regions_and_origins.csv', sep=''))
+all_elements <- all_elements[,c('Region_crops','Region')]
+colnames(all_elements) <- c('R_origin', 'R_recipients')
+regions <- sort(unique(as.character(all_elements$R_recipients)))
+all.combinations <- as.data.frame(expand.grid(regions, regions)); colnames(all.combinations) <- c('R_origin', 'R_recipients')
+rownames(all.combinations) <- 1:nrow(all.combinations)
+all.combinations <- data.frame(R_origin=all.combinations$R_origin, R_recipients=all.combinations$R_recipients)
+all.combinations$R_origin <- as.character(all.combinations$R_origin)
+all.combinations$R_recipients <- as.character(all.combinations$R_recipients)
+rm(all_elements, regions)
+
+# Load information by flow and bring list format
+top5_info <- read.csv(paste(work_dir, '/_interactive/_useful_info/most_important_fs_crop_flows.csv', sep=''))
+top5_info <- top5_info[top5_info$R_origin!='Not_Specified',]; top5_info <- top5_info[top5_info$R_recipients!='Not_Specified',]
+cropList <- sort(as.character(unique(top5_info$Item)))
+elements <- sort(as.character(unique(top5_info$Element)))
+elements <- elements[c(2, 4, 1, 3)]
+top5_info <- lapply(1:length(elements), function(i)
+{
+  # Subsetting by element
+  sub_data <- top5_info[top5_info$Element==elements[[i]],]; rownames(sub_data) <- 1:nrow(sub_data)
+  combinations <- sub_data[,c('R_origin', 'R_recipients')]; combinations <- unique(combinations)
+  combinations$R_origin <- as.character(combinations$R_origin); combinations$R_recipients <- as.character(combinations$R_recipients)
+  rownames(combinations) <- 1:nrow(combinations)
+  
+  # Completing all flows
+  library(dplyr)
+  all.combinations <- anti_join(all.combinations,combinations)
+  all.combinations$Element <- unique(as.character(sub_data$Element))
+  all.combinations$Item <- NA
+  all.combinations$Average <- NA
+  all.combinations <- rbind(sub_data, all.combinations); rm(combinations, sub_data)
+  rownames(all.combinations) <- 1:nrow(all.combinations)
+  
+  # Fix regions names
+  
+  all.combinations$R_origin <- gsub(pattern='America_North', replacement='N\nAmerica', x=all.combinations$R_origin)
+  all.combinations$R_origin <- gsub(pattern='America_Central_and_Mexico', replacement='C\nAmerica', x=all.combinations$R_origin)
+  all.combinations$R_origin <- gsub(pattern='America_Caribbean', replacement='Caribbean', x=all.combinations$R_origin)
+  all.combinations$R_origin <- gsub(pattern='America_South_andean', replacement='Andes', x=all.combinations$R_origin)
+  all.combinations$R_origin <- gsub(pattern='America_South_tropical', replacement='Trop. S.\nAmerica', x=all.combinations$R_origin)
+  all.combinations$R_origin <- gsub(pattern='America_South_temperate', replacement='Temp. S.\nAmerica', x=all.combinations$R_origin)
+  all.combinations$R_origin <- gsub(pattern='Africa_West', replacement='W\nAfrica', x=all.combinations$R_origin)
+  all.combinations$R_origin <- gsub(pattern='Africa_Central', replacement='C\nAfrica', x=all.combinations$R_origin)
+  all.combinations$R_origin <- gsub(pattern='Africa_East', replacement='E\nAfrica', x=all.combinations$R_origin)
+  all.combinations$R_origin <- gsub(pattern='Africa_Southern', replacement='S\nAfrica', x=all.combinations$R_origin)
+  all.combinations$R_origin <- gsub(pattern='Africa_Indian_Ocean_Islands', replacement='IOI', x=all.combinations$R_origin)
+  all.combinations$R_origin <- gsub(pattern='Europe_Western_north', replacement='NW\nEurope', x=all.combinations$R_origin)
+  all.combinations$R_origin <- gsub(pattern='Europe_Western_south', replacement='SW\nEurope', x=all.combinations$R_origin)
+  all.combinations$R_origin <- gsub(pattern='Europe_Eastern_north', replacement='NE\nEurope', x=all.combinations$R_origin)
+  all.combinations$R_origin <- gsub(pattern='Europe_Eastern_south', replacement='SE\nEurope', x=all.combinations$R_origin)
+  all.combinations$R_origin <- gsub(pattern='Mediterranean_SouthandEast', replacement='SE\nMediterranean', x=all.combinations$R_origin)
+  all.combinations$R_origin <- gsub(pattern='Asia_West', replacement='W\nAsia', x=all.combinations$R_origin)
+  all.combinations$R_origin <- gsub(pattern='Asia_Central', replacement='C\nAsia', x=all.combinations$R_origin)
+  all.combinations$R_origin <- gsub(pattern='Asia_South', replacement='S\nAsia', x=all.combinations$R_origin)
+  all.combinations$R_origin <- gsub(pattern='Asia_East', replacement='E\nAsia', x=all.combinations$R_origin)
+  all.combinations$R_origin <- gsub(pattern='Asia_Southeast', replacement='SE\nAsia', x=all.combinations$R_origin)
+  all.combinations$R_origin <- gsub(pattern='Pacific_Region_tropical', replacement='Pacific', x=all.combinations$R_origin)
+  all.combinations$R_origin <- gsub(pattern='Pacific_Region_ausnz', replacement='ANZ', x=all.combinations$R_origin)
+  
+  all.combinations$R_recipients <- gsub(pattern='America_North', replacement='N\nAmerica', x=all.combinations$R_recipients)
+  all.combinations$R_recipients <- gsub(pattern='America_Central_and_Mexico', replacement='C\nAmerica', x=all.combinations$R_recipients)
+  all.combinations$R_recipients <- gsub(pattern='America_Caribbean', replacement='Caribbean', x=all.combinations$R_recipients)
+  all.combinations$R_recipients <- gsub(pattern='America_South_andean', replacement='Andes', x=all.combinations$R_recipients)
+  all.combinations$R_recipients <- gsub(pattern='America_South_tropical', replacement='Trop. S.\nAmerica', x=all.combinations$R_recipients)
+  all.combinations$R_recipients <- gsub(pattern='America_South_temperate', replacement='Temp. S.\nAmerica', x=all.combinations$R_recipients)
+  all.combinations$R_recipients <- gsub(pattern='Africa_West', replacement='W\nAfrica', x=all.combinations$R_recipients)
+  all.combinations$R_recipients <- gsub(pattern='Africa_Central', replacement='C\nAfrica', x=all.combinations$R_recipients)
+  all.combinations$R_recipients <- gsub(pattern='Africa_East', replacement='E\nAfrica', x=all.combinations$R_recipients)
+  all.combinations$R_recipients <- gsub(pattern='Africa_Southern', replacement='S\nAfrica', x=all.combinations$R_recipients)
+  all.combinations$R_recipients <- gsub(pattern='Africa_Indian_Ocean_Islands', replacement='IOI', x=all.combinations$R_recipients)
+  all.combinations$R_recipients <- gsub(pattern='Europe_Western_north', replacement='NW\nEurope', x=all.combinations$R_recipients)
+  all.combinations$R_recipients <- gsub(pattern='Europe_Western_south', replacement='SW\nEurope', x=all.combinations$R_recipients)
+  all.combinations$R_recipients <- gsub(pattern='Europe_Eastern_north', replacement='NE\nEurope', x=all.combinations$R_recipients)
+  all.combinations$R_recipients <- gsub(pattern='Europe_Eastern_south', replacement='SE\nEurope', x=all.combinations$R_recipients)
+  all.combinations$R_recipients <- gsub(pattern='Mediterranean_SouthandEast', replacement='SE\nMediterranean', x=all.combinations$R_recipients)
+  all.combinations$R_recipients <- gsub(pattern='Asia_West', replacement='W\nAsia', x=all.combinations$R_recipients)
+  all.combinations$R_recipients <- gsub(pattern='Asia_Central', replacement='C\nAsia', x=all.combinations$R_recipients)
+  all.combinations$R_recipients <- gsub(pattern='Asia_South', replacement='S\nAsia', x=all.combinations$R_recipients)
+  all.combinations$R_recipients <- gsub(pattern='Asia_East', replacement='E\nAsia', x=all.combinations$R_recipients)
+  all.combinations$R_recipients <- gsub(pattern='Asia_Southeast', replacement='SE\nAsia', x=all.combinations$R_recipients)
+  all.combinations$R_recipients <- gsub(pattern='Pacific_Region_tropical', replacement='Pacific', x=all.combinations$R_recipients)
+  all.combinations$R_recipients <- gsub(pattern='Pacific_Region_ausnz', replacement='ANZ', x=all.combinations$R_recipients)
+  
+  correctNames <- read.csv(flows[1], row.names=1); correctNames <- rownames(correctNames)
+  
+  return(all.combinations)
+})
+rm(all.combinations, elements)
+
+### Fix crop list
+
+cropList <- tolower(gsub(pattern='&', replacement='and', x=gsub(pattern=',', replacement='', x=gsub(pattern=' ', replacement='_', x=cropList))))
+cropListDF <- data.frame(crop=cropList, position=1:length(cropList))
+
 ### Define elements to construct JSON file
+
+# {labels} for JSON file
+crop.labels <- cropList
 
 # {names} for JSON file
 mat.labels <- rownames(flowsFiles[[1]])
@@ -92,6 +192,13 @@ regions <- setdiff(1:length(mat.labels),grep(pattern='*_rep$', x=mat.labels)) - 
 # Redo {names} for JSON file
 mat.labels <- gsub(pattern='*_rep$', replacement='', x=mat.labels)
 # mat.labels <- gsub(pattern='\n', replacement='<br />', x=mat.labels)
+
+# {help} for JSON file
+
+help <- list(calories    = list(values, positions), # values and positions are vectors of data
+             protein     = list(values, positions),
+             fat         = list(values, positions),
+             food_weight = list(values, positions))
 
 ### Making JSON file
 
