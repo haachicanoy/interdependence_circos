@@ -90,10 +90,18 @@ all.combinations$R_origin <- as.character(all.combinations$R_origin)
 all.combinations$R_recipients <- as.character(all.combinations$R_recipients)
 rm(all_elements, regions)
 
-# Load information by flow and bring list format
+### Load information by flow and bring list format
+
 top5_info <- read.csv(paste(work_dir, '/_interactive/_useful_info/most_important_fs_crop_flows.csv', sep=''))
 top5_info <- top5_info[top5_info$R_origin!='Not_Specified',]; top5_info <- top5_info[top5_info$R_recipients!='Not_Specified',]
+top5_info$Item <- tolower(gsub(pattern='&', replacement='and', x=gsub(pattern=',', replacement='', x=gsub(pattern=' ', replacement='_', x=top5_info$Item))))
+
+### Fix crop list
+
 cropList <- sort(as.character(unique(top5_info$Item)))
+cropList <- tolower(gsub(pattern='&', replacement='and', x=gsub(pattern=',', replacement='', x=gsub(pattern=' ', replacement='_', x=cropList))))
+cropListDF <- data.frame(crop=cropList, position=1:length(cropList))
+
 elements <- sort(as.character(unique(top5_info$Element)))
 elements <- elements[c(2, 4, 1, 3)]
 top5_info <- lapply(1:length(elements), function(i)
@@ -163,16 +171,35 @@ top5_info <- lapply(1:length(elements), function(i)
   all.combinations$R_recipients <- gsub(pattern='Pacific_Region_tropical', replacement='Pacific', x=all.combinations$R_recipients)
   all.combinations$R_recipients <- gsub(pattern='Pacific_Region_ausnz', replacement='ANZ', x=all.combinations$R_recipients)
   
-  correctNames <- read.csv(flows[1], row.names=1); correctNames <- rownames(correctNames)
+  relationDF <- read.csv(flows[1], row.names=1); colnames(relationDF) <- rownames(relationDF)
+  relationDF <- as.data.frame(expand.grid(colnames(relationDF), rownames(relationDF)))
+  relationDF <- relationDF[,c(2,1)]; colnames(relationDF) <- c('R_origin', 'R_recipients')
   
-  return(all.combinations)
+  statsFlow <- lapply(1:nrow(relationDF), function(j)
+  {
+    flow <- all.combinations[all.combinations$R_origin==relationDF$R_origin[j] & all.combinations$R_recipients==relationDF$R_recipients[j],]
+    flow <- unique(flow)
+    values <- flow$Average; positions <- as.character(flow$Item)
+    if(length(values)==1){
+      if(sum(is.na(values))>0){values <- ''}
+      if(sum(is.na(positions))){positions <- ''}
+    } else {
+      positions <- match(positions, cropList)
+    }
+    if(is.numeric(values)){
+      flowInfo <- list(values=round(values,1),
+                       positions=positions)
+    } else {
+      flowInfo <- list(values=values,
+                       positions=positions)
+    }
+    
+    return(flowInfo)
+  })
+  
+  return(statsFlow)
 })
 rm(all.combinations, elements)
-
-### Fix crop list
-
-cropList <- tolower(gsub(pattern='&', replacement='and', x=gsub(pattern=',', replacement='', x=gsub(pattern=' ', replacement='_', x=cropList))))
-cropListDF <- data.frame(crop=cropList, position=1:length(cropList))
 
 ### Define elements to construct JSON file
 

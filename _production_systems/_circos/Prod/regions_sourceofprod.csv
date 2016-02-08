@@ -44,12 +44,9 @@
 "Africa_Central","Asia_West","Area harvested",355288,297355,360541,337728
 "Africa_Central","Asia_West","Gross Production Value (current million US$)",64.27,67.07,106.84,79.3933333333333
 "Africa_Central","Asia_West","Production",295074,300678,433195,342982.333333333
-"Africa_Central","Europe_Eastern_north","Area harvested",28,20,18,22
-"Africa_Central","Europe_Eastern_North","Area harvested",110,120,122,117.333333333333
+"Africa_Central","Europe_Eastern_north","Area harvested",138,140,140,139.333333333333
 "Africa_Central","Europe_Eastern_north","Gross Production Value (current million US$)",1.64,1.68,2.14,1.82
-"Africa_Central","Europe_Eastern_North","Gross Production Value (current million US$)",0,0,0,0
-"Africa_Central","Europe_Eastern_north","Production",973,995,1051,1006.33333333333
-"Africa_Central","Europe_Eastern_North","Production",107,120,143,123.333333333333
+"Africa_Central","Europe_Eastern_north","Production",1080,1115,1194,1129.66666666667
 "Africa_Central","Europe_Eastern_south","Area harvested",13376,11825,12592,12597.6666666667
 "Africa_Central","Europe_Eastern_south","Gross Production Value (current million US$)",7.09,7.73,9.85,8.22333333333333
 "Africa_Central","Europe_Eastern_south","Production",69040,66550,68758,68116
@@ -62,6 +59,9 @@
 "Africa_Central","Mediterranean_SouthandEast","Area harvested",40989,31209,32855,35017.6666666667
 "Africa_Central","Mediterranean_SouthandEast","Gross Production Value (current million US$)",7.09,7.73,9.85,8.22333333333333
 "Africa_Central","Mediterranean_SouthandEast","Production",77206,75400,77652,76752.6666666667
+"Africa_Central","Not_Specified","Area harvested",331378,298657,297107,309047.333333333
+"Africa_Central","Not_Specified","Gross Production Value (current million US$)",174.14,299.84,206.94,226.973333333333
+"Africa_Central","Not_Specified","Production",1856615,1763501,1871436.83,1830517.61
 "Africa_Central","Pacific_Region_tropical","Area harvested",408100,422076,435431,421869
 "Africa_Central","Pacific_Region_tropical","Gross Production Value (current million US$)",390.81,489.23,623.92,501.32
 "Africa_Central","Pacific_Region_tropical","Production",1817548,1844463,1929011.11,1863674.03666667
@@ -111,11 +111,8 @@
 "Africa_East","Asia_West","Gross Production Value (current million US$)",5027.91,6019.15,2532.32,4526.46
 "Africa_East","Asia_West","Production",10621659,10776891,10688731,10695760.3333333
 "Africa_East","Europe_Eastern_north","Area harvested",194737,132095,175924,167585.333333333
-"Africa_East","Europe_Eastern_North","Area harvested",0,0,0,0
 "Africa_East","Europe_Eastern_north","Gross Production Value (current million US$)",135.75,73.74,101.87,103.786666666667
-"Africa_East","Europe_Eastern_North","Gross Production Value (current million US$)",0,0,0,0
 "Africa_East","Europe_Eastern_north","Production",231889,157401,209403,199564.333333333
-"Africa_East","Europe_Eastern_North","Production",0,0,0,0
 "Africa_East","Europe_Eastern_south","Area harvested",722378,646961,772756,714031.666666667
 "Africa_East","Europe_Eastern_south","Gross Production Value (current million US$)",609.15,567.63,618.59,598.456666666667
 "Africa_East","Europe_Eastern_south","Production",1900139,2221455,2180563,2100719
@@ -128,6 +125,9 @@
 "Africa_East","Mediterranean_SouthandEast","Area harvested",4399967,3954300,3789001.15,4047756.05
 "Africa_East","Mediterranean_SouthandEast","Gross Production Value (current million US$)",3497.13,3580.42,2181.09,3086.21333333333
 "Africa_East","Mediterranean_SouthandEast","Production",8369733,8527164,8110766,8335887.66666667
+"Africa_East","Not_Specified","Area harvested",4854594,5056653,5134493,5015246.66666667
+"Africa_East","Not_Specified","Gross Production Value (current million US$)",1214.3,2356.16,50.43,1206.96333333333
+"Africa_East","Not_Specified","Production",12252530,13069435,13462733,12928232.6666667
 "Africa_East","Pacific_Region_tropical","Area harvested",106148,109247,182719,132704.666666667
 "Africa_East","Pacific_Region_tropical","Gross Production Value (current million US$)",101.56,172.74,75.18,116.493333333333
 "Africa_East","Pacific_Region_tropical","Production",291587,356819,418775,355727
@@ -177,11 +177,8 @@
 "Africa_Indian_Ocean_Islands","Asia_West","Gross Production Value (current million US$)",19.58,20.46,23.08,21.04
 "Africa_Indian_Ocean_Islands","Asia_West","Production",78698,80959,81090,80249
 "Africa_Indian_Ocean_Islands","Europe_Eastern_north","Area harvested",5009,4713,4787,4836.33333333333
-"Africa_Indian_Ocean_Islands","Europe_Eastern_North","Area harvested",0,0,0,0
 "Africa_Indian_Ocean_Islands","Europe_Eastern_north","Gross Production Value (current million US$)",1.53,1.5,1.66,1.56333333333333
-"Africa_Indian_Ocean_Islands","Europe_Eastern_North","Gross Production Value (current million US$)",0,0,0,0
 "Africa_Indian_Ocean_Islands","Europe_Eastern_north","Production",7782,7811,7647,7746.66666666667
-"Africa_Indian_Ocean_Islands","Europe_Eastern_North","Production",0,0,0,0
 "Africa_Indian_Ocean_Islands","Europe_Eastern_south","Area harvested",27197,26909,25315,26473.6666666667
 "Africa_Indian_Ocean_Islands","Europe_Eastern_south","Gross Production Value (current million US$)",13.03,13.45,13.9,13.46
 "Africa_Indian_Ocean_Islands","Europe_Eastern_south","Production",67388,71541,70509,69812.6666666667
@@ -194,6 +191,9 @@
 "Africa_Indian_Ocean_Islands","Mediterranean_SouthandEast","Area harvested",36860,36972,34981,36271
 "Africa_Indian_Ocean_Islands","Mediterranean_SouthandEast","Gross Production Value (current million US$)",19.65,19.96,20.82,20.1433333333333
 "Africa_Indian_Ocean_Islands","Mediterranean_SouthandEast","Production",84672,90047,86569,87096
+"Africa_Indian_Ocean_Islands","Not_Specified","Area harvested",110264,103085,103647,105665.333333333
+"Africa_Indian_Ocean_Islands","Not_Specified","Gross Production Value (current million US$)",0,0,0,0
+"Africa_Indian_Ocean_Islands","Not_Specified","Production",534437,571456,618940,574944.333333333
 "Africa_Indian_Ocean_Islands","Pacific_Region_tropical","Area harvested",71459,71005,69921,70795
 "Africa_Indian_Ocean_Islands","Pacific_Region_tropical","Gross Production Value (current million US$)",0.9,0.88,1.06,0.946666666666667
 "Africa_Indian_Ocean_Islands","Pacific_Region_tropical","Production",318019,322610,302708,314445.666666667
@@ -243,11 +243,8 @@
 "Africa_Southern","Asia_West","Gross Production Value (current million US$)",3326.81,3939.95,4445.36,3904.04
 "Africa_Southern","Asia_West","Production",11335035,11098865,12260387,11564762.3333333
 "Africa_Southern","Europe_Eastern_north","Area harvested",52290,54517,61452,56086.3333333333
-"Africa_Southern","Europe_Eastern_North","Area harvested",0,0,0,0
 "Africa_Southern","Europe_Eastern_north","Gross Production Value (current million US$)",367.97,405.91,490.76,421.546666666667
-"Africa_Southern","Europe_Eastern_North","Gross Production Value (current million US$)",0,0,0,0
 "Africa_Southern","Europe_Eastern_north","Production",915173,829840,912753,885922
-"Africa_Southern","Europe_Eastern_North","Production",0,0,0,0
 "Africa_Southern","Europe_Eastern_south","Area harvested",302687,367771,399853,356770.333333333
 "Africa_Southern","Europe_Eastern_south","Gross Production Value (current million US$)",687.73,786.24,879.97,784.646666666667
 "Africa_Southern","Europe_Eastern_south","Production",1893664,1887290,1957466,1912806.66666667
@@ -260,6 +257,9 @@
 "Africa_Southern","Mediterranean_SouthandEast","Area harvested",1685948,1586139,1784662,1685583
 "Africa_Southern","Mediterranean_SouthandEast","Gross Production Value (current million US$)",2870.57,3449.62,3817.33,3379.17333333333
 "Africa_Southern","Mediterranean_SouthandEast","Production",5201025,4731635,5570115,5167591.66666667
+"Africa_Southern","Not_Specified","Area harvested",1582013,1658536,1705523,1648690.66666667
+"Africa_Southern","Not_Specified","Gross Production Value (current million US$)",241.45,450.45,426.41,372.77
+"Africa_Southern","Not_Specified","Production",4998943,5394614,5845716,5413091
 "Africa_Southern","Pacific_Region_tropical","Area harvested",763610,744902,755702,754738
 "Africa_Southern","Pacific_Region_tropical","Gross Production Value (current million US$)",210.1,193.08,192.79,198.656666666667
 "Africa_Southern","Pacific_Region_tropical","Production",867909,872640,835320,858623
@@ -309,11 +309,8 @@
 "Africa_West","Asia_West","Gross Production Value (current million US$)",2337.98,2983.58,3180.91,2834.15666666667
 "Africa_West","Asia_West","Production",3519237.55,3835982.2,3820457,3725225.58333333
 "Africa_West","Europe_Eastern_north","Area harvested",4638,4877,5260,4925
-"Africa_West","Europe_Eastern_North","Area harvested",0,0,0,0
 "Africa_West","Europe_Eastern_north","Gross Production Value (current million US$)",7.87,8.64,9.37,8.62666666666667
-"Africa_West","Europe_Eastern_North","Gross Production Value (current million US$)",0,0,0,0
 "Africa_West","Europe_Eastern_north","Production",71178,74628,74164,73323.3333333333
-"Africa_West","Europe_Eastern_North","Production",0,0,0,0
 "Africa_West","Europe_Eastern_south","Area harvested",80876,81909,80253,81012.6666666667
 "Africa_West","Europe_Eastern_south","Gross Production Value (current million US$)",125.82,132.19,169.46,142.49
 "Africa_West","Europe_Eastern_south","Production",458790.55,493937.67,518314,490347.406666667
@@ -326,6 +323,9 @@
 "Africa_West","Mediterranean_SouthandEast","Area harvested",178815,203620,221922,201452.333333333
 "Africa_West","Mediterranean_SouthandEast","Gross Production Value (current million US$)",271.17,310.17,363.06,314.8
 "Africa_West","Mediterranean_SouthandEast","Production",657376.55,732970.67,787124,725823.74
+"Africa_West","Not_Specified","Area harvested",3232358.17,3546414,3398162,3392311.39
+"Africa_West","Not_Specified","Gross Production Value (current million US$)",626.03,545.02,468.09,546.38
+"Africa_West","Not_Specified","Production",13412317.07,15020867.96,14837260,14423481.6766667
 "Africa_West","Pacific_Region_tropical","Area harvested",1496029,1622126,1559066,1559073.66666667
 "Africa_West","Pacific_Region_tropical","Gross Production Value (current million US$)",1993.14,2424.11,2744.8,2387.35
 "Africa_West","Pacific_Region_tropical","Production",5958661.22,5892086,6159449,6003398.74
@@ -375,11 +375,8 @@
 "America_Caribbean","Asia_West","Gross Production Value (current million US$)",122.67,149.64,174.45,148.92
 "America_Caribbean","Asia_West","Production",410648.72,383650.55,498898.68,431065.983333333
 "America_Caribbean","Europe_Eastern_north","Area harvested",2172.6,2055.7,2319.13,2182.47666666667
-"America_Caribbean","Europe_Eastern_North","Area harvested",0,0,0,0
 "America_Caribbean","Europe_Eastern_north","Gross Production Value (current million US$)",19.39,23.37,29.02,23.9266666666667
-"America_Caribbean","Europe_Eastern_North","Gross Production Value (current million US$)",0,0,0,0
 "America_Caribbean","Europe_Eastern_north","Production",34581.1,32606.65,37749.05,34978.9333333333
-"America_Caribbean","Europe_Eastern_North","Production",0,0,0,0
 "America_Caribbean","Europe_Eastern_south","Area harvested",18936.29,17532.07,21811.2,19426.52
 "America_Caribbean","Europe_Eastern_south","Gross Production Value (current million US$)",85.08,96.41,117.11,99.5333333333333
 "America_Caribbean","Europe_Eastern_south","Production",320995.67,299634.18,364396.05,328341.966666667
@@ -392,6 +389,9 @@
 "America_Caribbean","Mediterranean_SouthandEast","Area harvested",22085.29,20718.08,24794.71,22532.6933333333
 "America_Caribbean","Mediterranean_SouthandEast","Gross Production Value (current million US$)",85.08,96.41,117.11,99.5333333333333
 "America_Caribbean","Mediterranean_SouthandEast","Production",338436.03,318418.63,384061.68,346972.113333333
+"America_Caribbean","Not_Specified","Area harvested",228038,239402,182708,216716
+"America_Caribbean","Not_Specified","Gross Production Value (current million US$)",119.03,133.41,163.83,138.756666666667
+"America_Caribbean","Not_Specified","Production",1575132,1652198,1655718,1627682.66666667
 "America_Caribbean","Pacific_Region_tropical","Area harvested",135269.42,124511,136464.45,132081.623333333
 "America_Caribbean","Pacific_Region_tropical","Gross Production Value (current million US$)",114.03,136.35,147.56,132.646666666667
 "America_Caribbean","Pacific_Region_tropical","Production",600284.72,664512,683419.59,649405.436666667
@@ -441,11 +441,8 @@
 "America_Central_and_Mexico","Asia_West","Gross Production Value (current million US$)",3909.36,3929.82,4757.72,4198.96666666667
 "America_Central_and_Mexico","Asia_West","Production",39050517.17,38553604.1,37680041.81,38428054.36
 "America_Central_and_Mexico","Europe_Eastern_north","Area harvested",173706,174891,162316,170304.333333333
-"America_Central_and_Mexico","Europe_Eastern_North","Area harvested",0,0,0,0
 "America_Central_and_Mexico","Europe_Eastern_north","Gross Production Value (current million US$)",502.29,646.76,667.04,605.363333333333
-"America_Central_and_Mexico","Europe_Eastern_North","Gross Production Value (current million US$)",0,0,0,0
 "America_Central_and_Mexico","Europe_Eastern_north","Production",1202582,1246263,1280059,1242968
-"America_Central_and_Mexico","Europe_Eastern_North","Production",0,0,0,0
 "America_Central_and_Mexico","Europe_Eastern_south","Area harvested",370151,403805.5,383070.5,385675.666666667
 "America_Central_and_Mexico","Europe_Eastern_south","Gross Production Value (current million US$)",1134.42,1366.47,1658.06,1386.31666666667
 "America_Central_and_Mexico","Europe_Eastern_south","Production",2968630,2996269,3254786,3073228.33333333
@@ -458,6 +455,9 @@
 "America_Central_and_Mexico","Mediterranean_SouthandEast","Area harvested",1336504,1234502.5,1132504.5,1234503.66666667
 "America_Central_and_Mexico","Mediterranean_SouthandEast","Gross Production Value (current million US$)",2588.78,2427.9,2927.97,2648.21666666667
 "America_Central_and_Mexico","Mediterranean_SouthandEast","Production",7031928.99,6803940.56,6638869.81,6824913.12
+"America_Central_and_Mexico","Not_Specified","Area harvested",444887,462179,470555.25,459207.083333333
+"America_Central_and_Mexico","Not_Specified","Gross Production Value (current million US$)",816.91,897.14,867.97,860.673333333333
+"America_Central_and_Mexico","Not_Specified","Production",3084182,3106332,3287748,3159420.66666667
 "America_Central_and_Mexico","Pacific_Region_tropical","Area harvested",254228,250400,246839,250489
 "America_Central_and_Mexico","Pacific_Region_tropical","Gross Production Value (current million US$)",451.73,507.69,562.9,507.44
 "America_Central_and_Mexico","Pacific_Region_tropical","Production",2827996,2793457,2803622,2808358.33333333
@@ -506,12 +506,9 @@
 "America_North","Asia_West","Area harvested",45857843,45878186,43586610,45107546.3333333
 "America_North","Asia_West","Gross Production Value (current million US$)",37714.21,39962.54,42233.03,39969.9266666667
 "America_North","Asia_West","Production",396556560,270388288,256208127.3,307717658.433333
-"America_North","Europe_Eastern_north","Area harvested",3070009,2722642,2551412,2781354.33333333
-"America_North","Europe_Eastern_North","Area harvested",11614,11736,11938,11762.6666666667
-"America_North","Europe_Eastern_north","Gross Production Value (current million US$)",11320.8,13512.87,14139.3,12990.99
-"America_North","Europe_Eastern_North","Gross Production Value (current million US$)",79.44,67.49,89.69,78.8733333333333
-"America_North","Europe_Eastern_north","Production",41985513,42874541,40203572,41687875.3333333
-"America_North","Europe_Eastern_North","Production",42638,25401,34927,34322
+"America_North","Europe_Eastern_north","Area harvested",3081623,2734378,2563350,2793117
+"America_North","Europe_Eastern_north","Gross Production Value (current million US$)",11400.24,13580.36,14228.99,13069.8633333333
+"America_North","Europe_Eastern_north","Production",42028151,42899942,40238499,41722197.3333333
 "America_North","Europe_Eastern_south","Area harvested",10934968,11108534,10695057,10912853
 "America_North","Europe_Eastern_south","Gross Production Value (current million US$)",21046.99,23986.11,27114.5,24049.2
 "America_North","Europe_Eastern_south","Production",62087599,62908804,59565169,61520524
@@ -524,6 +521,9 @@
 "America_North","Mediterranean_SouthandEast","Area harvested",46115055,43740465,42269381,44041633.6666667
 "America_North","Mediterranean_SouthandEast","Gross Production Value (current million US$)",39942.18,42748.55,49497.54,44062.7566666667
 "America_North","Mediterranean_SouthandEast","Production",165351959,161000600,152809808,159720789
+"America_North","Not_Specified","Area harvested",176745,183159,179871,179925
+"America_North","Not_Specified","Gross Production Value (current million US$)",918.11,1131.78,1142.38,1064.09
+"America_North","Not_Specified","Production",1503489,1488582,1460049,1484040
 "America_North","Pacific_Region_tropical","Area harvested",36970,37628,35521,36706.3333333333
 "America_North","Pacific_Region_tropical","Gross Production Value (current million US$)",423.48,387.16,424.8,411.813333333333
 "America_North","Pacific_Region_tropical","Production",1052070,1049802,1029597,1043823
@@ -573,11 +573,8 @@
 "America_South_andean","Asia_West","Gross Production Value (current million US$)",3463.7,3092.34,4339.35,3631.79666666667
 "America_South_andean","Asia_West","Production",18059475,19158278.92,19637727.68,18951827.2
 "America_South_andean","Europe_Eastern_north","Area harvested",249050.7,228347.6,266515.41,247971.236666667
-"America_South_andean","Europe_Eastern_North","Area harvested",0,0,0,0
 "America_South_andean","Europe_Eastern_north","Gross Production Value (current million US$)",766.5,974.67,1240.1,993.756666666667
-"America_South_andean","Europe_Eastern_North","Gross Production Value (current million US$)",0,0,0,0
 "America_South_andean","Europe_Eastern_north","Production",3856378,4594096.7,5409666.16,4620046.95333333
-"America_South_andean","Europe_Eastern_North","Production",0,0,0,0
 "America_South_andean","Europe_Eastern_south","Area harvested",617120.93,631375.04,646027.66,631507.876666667
 "America_South_andean","Europe_Eastern_south","Gross Production Value (current million US$)",1395.95,1721.21,2110.79,1742.65
 "America_South_andean","Europe_Eastern_south","Production",5959959,6674061.4,7350646.52,6661555.64
@@ -590,6 +587,9 @@
 "America_South_andean","Mediterranean_SouthandEast","Area harvested",1664952.93,1654738.02,1675607.71,1665099.55333333
 "America_South_andean","Mediterranean_SouthandEast","Gross Production Value (current million US$)",2559.22,2160.65,3418.24,2712.70333333333
 "America_South_andean","Mediterranean_SouthandEast","Production",8956566,10121740.22,11032710.78,10037005.6666667
+"America_South_andean","Not_Specified","Area harvested",363567.4,367889.02,377417.52,369624.646666667
+"America_South_andean","Not_Specified","Gross Production Value (current million US$)",141.18,166.01,173.92,160.37
+"America_South_andean","Not_Specified","Production",2887273.94,2926340.65,3031808,2948474.19666667
 "America_South_andean","Pacific_Region_tropical","Area harvested",29399.6,29175,29810.99,29461.8633333333
 "America_South_andean","Pacific_Region_tropical","Gross Production Value (current million US$)",26.52,31.28,32.85,30.2166666666667
 "America_South_andean","Pacific_Region_tropical","Production",276955,293300,293340,287865
@@ -639,11 +639,8 @@
 "America_South_temperate","Asia_West","Gross Production Value (current million US$)",5481.34,7020.17,9970.93,7490.81333333333
 "America_South_temperate","Asia_West","Production",66791921.3,75941789.4,77259823,73331177.9
 "America_South_temperate","Europe_Eastern_north","Area harvested",541097.7,675561,609038,608565.566666667
-"America_South_temperate","Europe_Eastern_North","Area harvested",0,0,0,0
 "America_South_temperate","Europe_Eastern_north","Gross Production Value (current million US$)",652.37,905.96,1055.28,871.203333333333
-"America_South_temperate","Europe_Eastern_North","Gross Production Value (current million US$)",0,0,0,0
 "America_South_temperate","Europe_Eastern_north","Production",7181151,8472323.7,8986596,8213356.9
-"America_South_temperate","Europe_Eastern_North","Production",0,0,0,0
 "America_South_temperate","Europe_Eastern_south","Area harvested",713917.43,693892.6,710759,706189.676666667
 "America_South_temperate","Europe_Eastern_south","Gross Production Value (current million US$)",1080.84,1279.5,1574.77,1311.70333333333
 "America_South_temperate","Europe_Eastern_south","Production",9269037,9972720.4,10647959,9963238.8
@@ -656,6 +653,9 @@
 "America_South_temperate","Mediterranean_SouthandEast","Area harvested",5728042.43,6782061.6,7560745,6690283.01
 "America_South_temperate","Mediterranean_SouthandEast","Gross Production Value (current million US$)",5035.85,6492.92,9403.68,6977.48333333333
 "America_South_temperate","Mediterranean_SouthandEast","Production",24375219.3,33563537.7,35403938,31114231.6666667
+"America_South_temperate","Not_Specified","Area harvested",96476.4,93099.4,92162,93912.6
+"America_South_temperate","Not_Specified","Gross Production Value (current million US$)",42.6,57.26,83.8,61.22
+"America_South_temperate","Not_Specified","Production",919863,920414,1063169,967815.333333333
 "America_South_temperate","Pacific_Region_tropical","Area harvested",8320.6,8939,8648,8635.86666666667
 "America_South_temperate","Pacific_Region_tropical","Gross Production Value (current million US$)",48.25,59.82,66.07,58.0466666666667
 "America_South_temperate","Pacific_Region_tropical","Production",123530,127674,127460,126221.333333333
@@ -705,11 +705,8 @@
 "America_South_tropical","Asia_West","Gross Production Value (current million US$)",7014.16,8744.21,9454.93,8404.43333333333
 "America_South_tropical","Asia_West","Production",21500957,23752096.72,23446762.68,22899938.8
 "America_South_tropical","Europe_Eastern_north","Area harvested",272086,317356.6,313833.41,301092.003333333
-"America_South_tropical","Europe_Eastern_North","Area harvested",0,0,0,0
 "America_South_tropical","Europe_Eastern_north","Gross Production Value (current million US$)",871.21,1135.05,1369.46,1125.24
-"America_South_tropical","Europe_Eastern_North","Gross Production Value (current million US$)",0,0,0,0
 "America_South_tropical","Europe_Eastern_north","Production",2456170,2712310,2883399.16,2683959.72
-"America_South_tropical","Europe_Eastern_North","Production",0,0,0,0
 "America_South_tropical","Europe_Eastern_south","Area harvested",583658.5,633676.44,625428.66,614254.533333333
 "America_South_tropical","Europe_Eastern_south","Gross Production Value (current million US$)",1720.04,2198.92,2474.55,2131.17
 "America_South_tropical","Europe_Eastern_south","Production",4077658,4301609,4494203.52,4291156.84
@@ -722,6 +719,9 @@
 "America_South_tropical","Mediterranean_SouthandEast","Area harvested",4493474.5,4317440.42,4337331.71,4382748.87666667
 "America_South_tropical","Mediterranean_SouthandEast","Gross Production Value (current million US$)",4793.23,5664.91,7274.54,5910.89333333333
 "America_South_tropical","Mediterranean_SouthandEast","Production",11690389,13395779.72,13230190.78,12772119.8333333
+"America_South_tropical","Not_Specified","Area harvested",667565,692762.62,685201.52,681843.046666667
+"America_South_tropical","Not_Specified","Gross Production Value (current million US$)",403.03,543.05,574.75,506.943333333333
+"America_South_tropical","Not_Specified","Production",6442791.94,6815312.65,7003590,6753898.19666667
 "America_South_tropical","Pacific_Region_tropical","Area harvested",380086,376052,370838.99,375658.996666667
 "America_South_tropical","Pacific_Region_tropical","Gross Production Value (current million US$)",1044.26,1299.86,1431.72,1258.61333333333
 "America_South_tropical","Pacific_Region_tropical","Production",4036994,4074168,4177757,4096306.33333333
@@ -770,12 +770,9 @@
 "Asia_Central","Asia_West","Area harvested",21672469,20048796,20697087.79,20806117.5966667
 "Asia_Central","Asia_West","Gross Production Value (current million US$)",6148.61,4624.97,8395.18,6389.58666666667
 "Asia_Central","Asia_West","Production",41527625.9,31783567,46512422.8,39941205.2333333
-"Asia_Central","Europe_Eastern_north","Area harvested",478362,658342,736672.63,624458.876666667
-"Asia_Central","Europe_Eastern_North","Area harvested",41665,44911,46144,44240
-"Asia_Central","Europe_Eastern_north","Gross Production Value (current million US$)",417.38,431.69,570.19,473.086666666667
-"Asia_Central","Europe_Eastern_North","Gross Production Value (current million US$)",94.45,110.56,136.14,113.716666666667
-"Asia_Central","Europe_Eastern_north","Production",2447568.3,2515308,3118890,2693922.1
-"Asia_Central","Europe_Eastern_North","Production",58399,64254,70711,64454.6666666667
+"Asia_Central","Europe_Eastern_north","Area harvested",520027,703253,782816.63,668698.876666667
+"Asia_Central","Europe_Eastern_north","Gross Production Value (current million US$)",511.83,542.25,706.33,586.803333333333
+"Asia_Central","Europe_Eastern_north","Production",2505967.3,2579562,3189601,2758376.76666667
 "Asia_Central","Europe_Eastern_south","Area harvested",981202,1353957,1400055,1245071.33333333
 "Asia_Central","Europe_Eastern_south","Gross Production Value (current million US$)",1145.33,1257.94,1661.93,1355.06666666667
 "Asia_Central","Europe_Eastern_south","Production",6347071.4,6704759.2,7712529.9,6921453.5
@@ -788,6 +785,9 @@
 "Asia_Central","Mediterranean_SouthandEast","Area harvested",21430003,19902162,20391719,20574628
 "Asia_Central","Mediterranean_SouthandEast","Gross Production Value (current million US$)",5728,4066.55,7989.7,5928.08333333333
 "Asia_Central","Mediterranean_SouthandEast","Production",40462089.7,30695106.2,45378552.9,38845249.6
+"Asia_Central","Not_Specified","Area harvested",341785,375497,484430,400570.666666667
+"Asia_Central","Not_Specified","Gross Production Value (current million US$)",275.65,360.93,346.17,327.583333333333
+"Asia_Central","Not_Specified","Production",2417398.3,2602494,2971187,2663693.1
 "Asia_Central","Pacific_Region_tropical","Area harvested",25570,28690,30199,28153
 "Asia_Central","Pacific_Region_tropical","Gross Production Value (current million US$)",29.62,45.84,36.52,37.3266666666667
 "Asia_Central","Pacific_Region_tropical","Production",383232,439384,493601,438739
@@ -836,12 +836,9 @@
 "Asia_East","Asia_West","Area harvested",38755230,39139310,39459736,39118092
 "Asia_East","Asia_West","Gross Production Value (current million US$)",118997.07,131087.23,184708.43,144930.91
 "Asia_East","Asia_West","Production",258842643,267550979,274865593,267086405
-"Asia_East","Europe_Eastern_north","Area harvested",4852975,4880492,4918012,4883826.33333333
-"Asia_East","Europe_Eastern_North","Area harvested",10814,10378,11297,10829.6666666667
+"Asia_East","Europe_Eastern_north","Area harvested",4863789,4890870,4929309,4894656
 "Asia_East","Europe_Eastern_north","Gross Production Value (current million US$)",49038.09,61071.67,42423.18,50844.3133333333
-"Asia_East","Europe_Eastern_North","Gross Production Value (current million US$)",0,0,0,0
-"Asia_East","Europe_Eastern_north","Production",65586565,68880809,74311301,69592891.6666667
-"Asia_East","Europe_Eastern_North","Production",18352,19935,22545,20277.3333333333
+"Asia_East","Europe_Eastern_north","Production",65604917,68900744,74333846,69613169
 "Asia_East","Europe_Eastern_south","Area harvested",19483391,19801366,20077849,19787535.3333333
 "Asia_East","Europe_Eastern_south","Gross Production Value (current million US$)",96639.91,112065.58,117832.14,108845.876666667
 "Asia_East","Europe_Eastern_south","Production",173790500,178948159,189691872,180810177
@@ -854,6 +851,9 @@
 "Asia_East","Mediterranean_SouthandEast","Area harvested",40748069,41026547,41165952,40980189.3333333
 "Asia_East","Mediterranean_SouthandEast","Gross Production Value (current million US$)",99178.2,107424.87,138649.12,115084.063333333
 "Asia_East","Mediterranean_SouthandEast","Production",246680786,249700251,258881315,251754117.333333
+"Asia_East","Not_Specified","Area harvested",11318535,11707393,12012719,11679549
+"Asia_East","Not_Specified","Gross Production Value (current million US$)",49700.57,56816.99,72688.36,59735.3066666667
+"Asia_East","Not_Specified","Production",169863579,174832800,181423452,175373277
 "Asia_East","Pacific_Region_tropical","Area harvested",583541,770684,775922,710049
 "Asia_East","Pacific_Region_tropical","Gross Production Value (current million US$)",6147.96,7449.49,8445.55,7347.66666666667
 "Asia_East","Pacific_Region_tropical","Production",14933201,19985406,19888492,18269033
@@ -903,11 +903,8 @@
 "Asia_South","Asia_West","Gross Production Value (current million US$)",29970.79,31357.9,35126.46,32151.7166666667
 "Asia_South","Asia_West","Production",116828858,120571100,132385385,123261781
 "Asia_South","Europe_Eastern_north","Area harvested",867189,822451,833827,841155.666666667
-"Asia_South","Europe_Eastern_North","Area harvested",0,0,0,0
 "Asia_South","Europe_Eastern_north","Gross Production Value (current million US$)",1705.17,1578.23,2541.38,1941.59333333333
-"Asia_South","Europe_Eastern_North","Gross Production Value (current million US$)",0,0,0,0
 "Asia_South","Europe_Eastern_north","Production",3147771,3027552,4190408,3455243.66666667
-"Asia_South","Europe_Eastern_North","Production",0,0,0,0
 "Asia_South","Europe_Eastern_south","Area harvested",10360354,9669014,10756324,10261897.3333333
 "Asia_South","Europe_Eastern_south","Gross Production Value (current million US$)",10692.1,10812.42,13098.31,11534.2766666667
 "Asia_South","Europe_Eastern_south","Production",29792647,29814487,34030802,31212645.3333333
@@ -920,6 +917,9 @@
 "Asia_South","Mediterranean_SouthandEast","Area harvested",49618432,50133174,53755956,51169187.3333333
 "Asia_South","Mediterranean_SouthandEast","Gross Production Value (current million US$)",34211.55,34970.12,39362.52,36181.3966666667
 "Asia_South","Mediterranean_SouthandEast","Production",122706548,122820527,134603489,126710188
+"Asia_South","Not_Specified","Area harvested",7430854,7808950,7737443,7659082.33333333
+"Asia_South","Not_Specified","Gross Production Value (current million US$)",15135,17589.15,17147.14,16623.7633333333
+"Asia_South","Not_Specified","Production",48625472,53667238,50201517,50831409
 "Asia_South","Pacific_Region_tropical","Area harvested",2386260,2390268,2565951,2447493
 "Asia_South","Pacific_Region_tropical","Gross Production Value (current million US$)",1539.15,1708.96,1640.23,1629.44666666667
 "Asia_South","Pacific_Region_tropical","Production",14087854,14033508,13575261,13898874.3333333
@@ -969,11 +969,8 @@
 "Asia_Southeast","Asia_West","Gross Production Value (current million US$)",2038.44,2409.42,2897.26,2448.37333333333
 "Asia_Southeast","Asia_West","Production",5877456.12,6110978.61,6182455.22,6056963.31666667
 "Asia_Southeast","Europe_Eastern_north","Area harvested",22577,21901,21601,22026.3333333333
-"Asia_Southeast","Europe_Eastern_North","Area harvested",0,0,0,0
 "Asia_Southeast","Europe_Eastern_north","Gross Production Value (current million US$)",125.15,125.68,150.84,133.89
-"Asia_Southeast","Europe_Eastern_North","Gross Production Value (current million US$)",0,0,0,0
 "Asia_Southeast","Europe_Eastern_north","Production",110473,106513,101829,106271.666666667
-"Asia_Southeast","Europe_Eastern_North","Production",0,0,0,0
 "Asia_Southeast","Europe_Eastern_south","Area harvested",441476,457509,453405,450796.666666667
 "Asia_Southeast","Europe_Eastern_south","Gross Production Value (current million US$)",1447.02,1758.99,2000.34,1735.45
 "Asia_Southeast","Europe_Eastern_south","Production",4223796,4495543,4538265.48,4419201.49333333
@@ -986,6 +983,9 @@
 "Asia_Southeast","Mediterranean_SouthandEast","Area harvested",898251,941087,941800.66,927046.22
 "Asia_Southeast","Mediterranean_SouthandEast","Gross Production Value (current million US$)",1581.35,1875.39,2122.5,1859.74666666667
 "Asia_Southeast","Mediterranean_SouthandEast","Production",4994246.12,5310470.61,5381877.82,5228864.85
+"Asia_Southeast","Not_Specified","Area harvested",4684656,4764368,4908160,4785728
+"Asia_Southeast","Not_Specified","Gross Production Value (current million US$)",4123.68,4796.4,5284.9,4734.99333333333
+"Asia_Southeast","Not_Specified","Production",35286682,35241278,36596332,35708097.3333333
 "Asia_Southeast","Pacific_Region_tropical","Area harvested",6873982,7136544,7092270.76,7034265.58666667
 "Asia_Southeast","Pacific_Region_tropical","Gross Production Value (current million US$)",5875.34,7746.07,10180.18,7933.86333333333
 "Asia_Southeast","Pacific_Region_tropical","Production",38445984,37323528,36379056.18,37382856.06
@@ -1034,12 +1034,9 @@
 "Asia_West","Asia_West","Area harvested",46461843.3,48078718.05,46304668.5,46948409.95
 "Asia_West","Asia_West","Gross Production Value (current million US$)",53095.51,57256.06,64329.23,58226.9333333333
 "Asia_West","Asia_West","Production",155601164.02,159283139.24,162251338.68,159045213.98
-"Asia_West","Europe_Eastern_north","Area harvested",1100082.1,1185672.2,1156152,1147302.1
-"Asia_West","Europe_Eastern_North","Area harvested",441108,452935,450977,448340
-"Asia_West","Europe_Eastern_north","Gross Production Value (current million US$)",5725.25,6208.48,6670.45,6201.39333333333
-"Asia_West","Europe_Eastern_North","Gross Production Value (current million US$)",1388.11,1749.69,1447.31,1528.37
-"Asia_West","Europe_Eastern_north","Production",28776537.14,31928047.84,30923165,30542583.3266667
-"Asia_West","Europe_Eastern_North","Production",521000,620284,451440,530908
+"Asia_West","Europe_Eastern_north","Area harvested",1541190.1,1638607.2,1607129,1595642.1
+"Asia_West","Europe_Eastern_north","Gross Production Value (current million US$)",7113.36,7958.17,8117.76,7729.76333333333
+"Asia_West","Europe_Eastern_north","Production",29297537.14,32548331.84,31374605,31073491.3266667
 "Asia_West","Europe_Eastern_south","Area harvested",4694259.4,4686204.6,4764080.5,4714848.16666667
 "Asia_West","Europe_Eastern_south","Gross Production Value (current million US$)",16658.04,18557.02,19732.92,18315.9933333333
 "Asia_West","Europe_Eastern_south","Production",40168522.98,43389492.38,43042385.6,42200133.6533333
@@ -1052,6 +1049,9 @@
 "Asia_West","Mediterranean_SouthandEast","Area harvested",43716330.3,45299755.75,43467811.5,44161299.1833333
 "Asia_West","Mediterranean_SouthandEast","Gross Production Value (current million US$)",37651.77,40205.61,44685.73,40847.7033333333
 "Asia_West","Mediterranean_SouthandEast","Production",128833815.35,131195134.62,132095807.08,130708252.35
+"Asia_West","Not_Specified","Area harvested",1227939.93,1354602.68,1427791,1336777.87
+"Asia_West","Not_Specified","Gross Production Value (current million US$)",2275.44,2393.88,2694.66,2454.66
+"Asia_West","Not_Specified","Production",11196370.03,12147355.82,13198415,12180713.6166667
 "Asia_West","Pacific_Region_tropical","Area harvested",282570.2,269421.9,264166,272052.7
 "Asia_West","Pacific_Region_tropical","Gross Production Value (current million US$)",1351.89,1453.46,1418.51,1407.95333333333
 "Asia_West","Pacific_Region_tropical","Production",4283050.11,4227183.1,4168569,4226267.40333333
@@ -1100,12 +1100,9 @@
 "Europe_Eastern_north","Asia_West","Area harvested",69966063,59162076,64872854,64666997.6666667
 "Europe_Eastern_north","Asia_West","Gross Production Value (current million US$)",30049.7,27358.62,43057.64,33488.6533333333
 "Europe_Eastern_north","Asia_West","Production",214856248,169742020,206827166,197141811.333333
-"Europe_Eastern_north","Europe_Eastern_north","Area harvested",7607470,7094941,8220787,7641066
-"Europe_Eastern_north","Europe_Eastern_North","Area harvested",5347,6584,6694,6208.33333333333
-"Europe_Eastern_north","Europe_Eastern_north","Gross Production Value (current million US$)",7293.16,8157.27,13031.62,9494.01666666667
-"Europe_Eastern_north","Europe_Eastern_North","Gross Production Value (current million US$)",4.99,5.47,7.17,5.87666666666667
-"Europe_Eastern_north","Europe_Eastern_north","Production",80951409,77668237,114425234,91014960
-"Europe_Eastern_north","Europe_Eastern_North","Production",5233,5127,5768,5376
+"Europe_Eastern_north","Europe_Eastern_north","Area harvested",7612817,7101525,8227481,7647274.33333333
+"Europe_Eastern_north","Europe_Eastern_north","Gross Production Value (current million US$)",7298.15,8162.74,13038.79,9499.89333333333
+"Europe_Eastern_north","Europe_Eastern_north","Production",80956642,77673364,114431002,91020336
 "Europe_Eastern_north","Europe_Eastern_south","Area harvested",10192900,10817991,11428153,10813014.6666667
 "Europe_Eastern_north","Europe_Eastern_south","Gross Production Value (current million US$)",14206.24,16652.24,23303.46,18053.98
 "Europe_Eastern_north","Europe_Eastern_south","Production",99414079,96435874,133974755,109941569.333333
@@ -1118,6 +1115,9 @@
 "Europe_Eastern_north","Mediterranean_SouthandEast","Area harvested",70576651,61679705,67454138,66570164.6666667
 "Europe_Eastern_north","Mediterranean_SouthandEast","Gross Production Value (current million US$)",34253.52,33385.07,52283.18,39973.9233333333
 "Europe_Eastern_north","Mediterranean_SouthandEast","Production",257551281,212905837,283728439,251395185.666667
+"Europe_Eastern_north","Not_Specified","Area harvested",1875189.9,1674668,1981211.6,1843689.83333333
+"Europe_Eastern_north","Not_Specified","Gross Production Value (current million US$)",910.45,958.83,1486.27,1118.51666666667
+"Europe_Eastern_north","Not_Specified","Production",8959462,8055364,8961531.9,8658785.96666667
 "Europe_Eastern_north","Pacific_Region_tropical","Area harvested",24857,25456,25173,25162
 "Europe_Eastern_north","Pacific_Region_tropical","Gross Production Value (current million US$)",34.03,37.7,39.38,37.0366666666667
 "Europe_Eastern_north","Pacific_Region_tropical","Production",172271,188440,176362,179024.333333333
@@ -1166,12 +1166,9 @@
 "Europe_Eastern_south","Asia_West","Area harvested",21596247,21127236,21006990.29,21243491.0966667
 "Europe_Eastern_south","Asia_West","Gross Production Value (current million US$)",36714.08,38599.7,40684.37,38666.05
 "Europe_Eastern_south","Asia_West","Production",88679227.9,89793587,92926663,90466492.6333333
-"Europe_Eastern_south","Europe_Eastern_north","Area harvested",1287145,1278525,1242981.63,1269550.54333333
-"Europe_Eastern_south","Europe_Eastern_North","Area harvested",436516,450649,449125,445430
-"Europe_Eastern_south","Europe_Eastern_north","Gross Production Value (current million US$)",4668.19,4943.56,5006.7,4872.81666666667
-"Europe_Eastern_south","Europe_Eastern_North","Gross Production Value (current million US$)",1301.13,1763.63,1454.46,1506.40666666667
-"Europe_Eastern_south","Europe_Eastern_north","Production",32798464.3,32081769,29225923,31368718.7666667
-"Europe_Eastern_south","Europe_Eastern_North","Production",525487,634040,464807,541444.666666667
+"Europe_Eastern_south","Europe_Eastern_north","Area harvested",1723661,1729174,1692106.63,1714980.54333333
+"Europe_Eastern_south","Europe_Eastern_north","Gross Production Value (current million US$)",5969.32,6707.19,6461.16,6379.22333333333
+"Europe_Eastern_south","Europe_Eastern_north","Production",33323951.3,32715809,29690730,31910163.4333333
 "Europe_Eastern_south","Europe_Eastern_south","Area harvested",4528524,4564414,4704104,4599014
 "Europe_Eastern_south","Europe_Eastern_south","Gross Production Value (current million US$)",20652.89,20585.2,21720.06,20986.05
 "Europe_Eastern_south","Europe_Eastern_south","Production",43808873.4,42763244,40436302,42336139.8
@@ -1184,6 +1181,9 @@
 "Europe_Eastern_south","Mediterranean_SouthandEast","Area harvested",19611507,19295748,19116615,19341290
 "Europe_Eastern_south","Mediterranean_SouthandEast","Gross Production Value (current million US$)",31484.53,31791.05,34254.05,32509.8766666667
 "Europe_Eastern_south","Mediterranean_SouthandEast","Production",85208782.7,82682801,83583150,83824911.2333333
+"Europe_Eastern_south","Not_Specified","Area harvested",310119,295260,304365,303248
+"Europe_Eastern_south","Not_Specified","Gross Production Value (current million US$)",220.76,209.5,201.67,210.643333333333
+"Europe_Eastern_south","Not_Specified","Production",1861369.3,1795991,1871930,1843096.76666667
 "Europe_Eastern_south","Pacific_Region_tropical","Area harvested",115185,105590,108560,109778.333333333
 "Europe_Eastern_south","Pacific_Region_tropical","Gross Production Value (current million US$)",760.31,865.58,778.47,801.453333333333
 "Europe_Eastern_south","Pacific_Region_tropical","Production",1849554,1798656,1815184,1821131.33333333
@@ -1232,12 +1232,9 @@
 "Europe_Western_north","Asia_West","Area harvested",24455041.73,24638111.84,24346946.19,24480033.2533333
 "Europe_Western_north","Asia_West","Gross Production Value (current million US$)",44913.22,52225.16,64373.56,53837.3133333333
 "Europe_Western_north","Asia_West","Production",209214793.6,196099347.82,194521500.34,199945213.92
-"Europe_Western_north","Europe_Eastern_north","Area harvested",3327897,3254128,3250142.7,3277389.23333333
-"Europe_Western_north","Europe_Eastern_North","Area harvested",3893,4172,4109,4058
-"Europe_Western_north","Europe_Eastern_north","Gross Production Value (current million US$)",10744.12,10572.97,12764.78,11360.6233333333
-"Europe_Western_north","Europe_Eastern_North","Gross Production Value (current million US$)",23.55,19.69,16.34,19.86
-"Europe_Western_north","Europe_Eastern_north","Production",127004067.3,115230605.94,135408447.42,125881040.22
-"Europe_Western_north","Europe_Eastern_North","Production",9769,10079,7342,9063.33333333333
+"Europe_Western_north","Europe_Eastern_north","Area harvested",3331790,3258300,3254251.7,3281447.23333333
+"Europe_Western_north","Europe_Eastern_north","Gross Production Value (current million US$)",10767.67,10592.66,12781.12,11380.4833333333
+"Europe_Western_north","Europe_Eastern_north","Production",127013836.3,115240684.94,135415789.42,125890103.553333
 "Europe_Western_north","Europe_Eastern_south","Area harvested",6929346.75,7291470.97,7126387.92,7115735.21333333
 "Europe_Western_north","Europe_Eastern_south","Gross Production Value (current million US$)",22605.58,23175.51,27560.87,24447.32
 "Europe_Western_north","Europe_Eastern_south","Production",147942915.1,136157988.66,155459441.88,146520115.213333
@@ -1250,6 +1247,9 @@
 "Europe_Western_north","Mediterranean_SouthandEast","Area harvested",28070316.02,28435910.13,28156823.82,28221016.6566667
 "Europe_Western_north","Mediterranean_SouthandEast","Gross Production Value (current million US$)",51482.63,58708.4,73760.63,61317.22
 "Europe_Western_north","Mediterranean_SouthandEast","Production",290538088,268381384.7,283221824.58,280713765.76
+"Europe_Western_north","Not_Specified","Area harvested",491603.54,484645,491386,489211.513333333
+"Europe_Western_north","Not_Specified","Gross Production Value (current million US$)",1557.78,1679.18,1743.12,1660.02666666667
+"Europe_Western_north","Not_Specified","Production",4423319.36,4231165.2,4316906.1,4323796.88666667
 "Europe_Western_north","Pacific_Region_tropical","Area harvested",15571,15733,15440,15581.3333333333
 "Europe_Western_north","Pacific_Region_tropical","Gross Production Value (current million US$)",0,0,0,0
 "Europe_Western_north","Pacific_Region_tropical","Production",304782,293111,279937,292610
@@ -1298,12 +1298,9 @@
 "Europe_Western_south","Asia_West","Area harvested",25003462,25740688,25036736,25260295.3333333
 "Europe_Western_south","Asia_West","Gross Production Value (current million US$)",56196.06,64039.62,71046.47,63760.7166666667
 "Europe_Western_south","Asia_West","Production",167343203.6,168497435.7,163684690.4,166508443.233333
-"Europe_Western_south","Europe_Eastern_north","Area harvested",1747772,1676724,1596523,1673673
-"Europe_Western_south","Europe_Eastern_North","Area harvested",89327,74273,89038,84212.6666666667
-"Europe_Western_south","Europe_Eastern_north","Gross Production Value (current million US$)",6752.61,6516.47,7176.75,6815.27666666667
-"Europe_Western_south","Europe_Eastern_North","Gross Production Value (current million US$)",287.43,284.16,464.02,345.203333333333
-"Europe_Western_south","Europe_Eastern_north","Production",53612660.3,49559870.1,56772522.7,53315017.7
-"Europe_Western_south","Europe_Eastern_North","Production",126992,115771,154210,132324.333333333
+"Europe_Western_south","Europe_Eastern_north","Area harvested",1837099,1750997,1685561,1757885.66666667
+"Europe_Western_south","Europe_Eastern_north","Gross Production Value (current million US$)",7040.04,6800.63,7640.77,7160.48
+"Europe_Western_south","Europe_Eastern_north","Production",53739652.3,49675641.1,56926732.7,53447342.0333333
 "Europe_Western_south","Europe_Eastern_south","Area harvested",7536318,7718092,7761547,7671985.66666667
 "Europe_Western_south","Europe_Eastern_south","Gross Production Value (current million US$)",30279.07,31751.59,33282.18,31770.9466666667
 "Europe_Western_south","Europe_Eastern_south","Production",77174159.1,73199445.7,81703090.1,77358898.3
@@ -1316,6 +1313,9 @@
 "Europe_Western_south","Mediterranean_SouthandEast","Area harvested",24513929,25125375,24666933,24768745.6666667
 "Europe_Western_south","Mediterranean_SouthandEast","Gross Production Value (current million US$)",56865.14,64290.95,72956.99,64704.36
 "Europe_Western_south","Mediterranean_SouthandEast","Production",163346279,158982372.7,164040160.1,162122937.266667
+"Europe_Western_south","Not_Specified","Area harvested",455621,452618,503882,470707
+"Europe_Western_south","Not_Specified","Gross Production Value (current million US$)",221.76,267.73,378.25,289.246666666667
+"Europe_Western_south","Not_Specified","Production",5503949.6,5389616.2,5628500.1,5507355.3
 "Europe_Western_south","Pacific_Region_tropical","Area harvested",76450,77579,70773,74934
 "Europe_Western_south","Pacific_Region_tropical","Gross Production Value (current million US$)",654.14,719.76,511.62,628.506666666667
 "Europe_Western_south","Pacific_Region_tropical","Production",1930418,1906565,1705667,1847550
@@ -1364,12 +1364,9 @@
 "Mediterranean_SouthandEast","Asia_West","Area harvested",37173521,36364308,37005117,36847648.6666667
 "Mediterranean_SouthandEast","Asia_West","Gross Production Value (current million US$)",42905,45468.56,49138.8,45837.4533333333
 "Mediterranean_SouthandEast","Asia_West","Production",157761829.45,153749524.33,162037650.2,157849667.993333
-"Mediterranean_SouthandEast","Europe_Eastern_north","Area harvested",2251628,2338901,2310252,2300260.33333333
-"Mediterranean_SouthandEast","Europe_Eastern_North","Area harvested",421187,432525,430040,427917.333333333
-"Mediterranean_SouthandEast","Europe_Eastern_north","Gross Production Value (current million US$)",8231.22,9287.96,9370.25,8963.14333333333
-"Mediterranean_SouthandEast","Europe_Eastern_North","Gross Production Value (current million US$)",1249.58,1692.59,1385.44,1442.53666666667
-"Mediterranean_SouthandEast","Europe_Eastern_north","Production",85091545.74,88839778.64,87683875,87205066.46
-"Mediterranean_SouthandEast","Europe_Eastern_North","Production",500087,600080,430084,510083.666666667
+"Mediterranean_SouthandEast","Europe_Eastern_north","Area harvested",2672815,2771426,2740292,2728177.66666667
+"Mediterranean_SouthandEast","Europe_Eastern_north","Gross Production Value (current million US$)",9480.8,10980.55,10755.69,10405.68
+"Mediterranean_SouthandEast","Europe_Eastern_north","Production",85591632.74,89439858.64,88113959,87715150.1266667
 "Mediterranean_SouthandEast","Europe_Eastern_south","Area harvested",8217430.3,8499644,8657409,8458161.1
 "Mediterranean_SouthandEast","Europe_Eastern_south","Gross Production Value (current million US$)",18007.43,20814.59,21656.13,20159.3833333333
 "Mediterranean_SouthandEast","Europe_Eastern_south","Production",98799040.68,103390373.28,102828955.6,101672789.853333
@@ -1382,6 +1379,9 @@
 "Mediterranean_SouthandEast","Mediterranean_SouthandEast","Area harvested",34776356.3,34005382,34622672,34468136.7666667
 "Mediterranean_SouthandEast","Mediterranean_SouthandEast","Gross Production Value (current million US$)",36725.94,37949.47,41832.12,38835.8433333333
 "Mediterranean_SouthandEast","Mediterranean_SouthandEast","Production",162727220.48,158812097.41,164827669.6,162122329.163333
+"Mediterranean_SouthandEast","Not_Specified","Area harvested",597050,656543,671532,641708.333333333
+"Mediterranean_SouthandEast","Not_Specified","Gross Production Value (current million US$)",627.31,686.51,715.38,676.4
+"Mediterranean_SouthandEast","Not_Specified","Production",4769693.37,4951151.88,5458652,5059832.41666667
 "Mediterranean_SouthandEast","Pacific_Region_tropical","Area harvested",193456,184579,192302,190112.333333333
 "Mediterranean_SouthandEast","Pacific_Region_tropical","Gross Production Value (current million US$)",1378.45,1318.13,1442.37,1379.65
 "Mediterranean_SouthandEast","Pacific_Region_tropical","Production",3925048.91,3699197,3917908,3847384.63666667
@@ -1431,11 +1431,8 @@
 "Pacific_Region_ausnz","Asia_West","Gross Production Value (current million US$)",9900.82,9578.87,13760.85,11080.18
 "Pacific_Region_ausnz","Asia_West","Production",42349247,42111297,48415162,44291902
 "Pacific_Region_ausnz","Europe_Eastern_north","Area harvested",926281,912465,887606,908784
-"Pacific_Region_ausnz","Europe_Eastern_North","Area harvested",0,0,0,0
 "Pacific_Region_ausnz","Europe_Eastern_north","Gross Production Value (current million US$)",1063.97,1071.94,1389.56,1175.15666666667
-"Pacific_Region_ausnz","Europe_Eastern_North","Gross Production Value (current million US$)",0,0,0,0
 "Pacific_Region_ausnz","Europe_Eastern_north","Production",2166889,2366266,2106840,2213331.66666667
-"Pacific_Region_ausnz","Europe_Eastern_North","Production",0,0,0,0
 "Pacific_Region_ausnz","Europe_Eastern_south","Area harvested",2650072,2751571,3357394,2919679
 "Pacific_Region_ausnz","Europe_Eastern_south","Gross Production Value (current million US$)",2556.94,2589.84,3734.18,2960.32
 "Pacific_Region_ausnz","Europe_Eastern_south","Production",4778241,4717624,5422713,4972859.33333333
@@ -1448,6 +1445,9 @@
 "Pacific_Region_ausnz","Mediterranean_SouthandEast","Area harvested",21951379,21500547,21708455,21720127
 "Pacific_Region_ausnz","Mediterranean_SouthandEast","Gross Production Value (current million US$)",9836.56,9325.64,13796.71,10986.3033333333
 "Pacific_Region_ausnz","Mediterranean_SouthandEast","Production",37473666,37216676,43924337,39538226.3333333
+"Pacific_Region_ausnz","Not_Specified","Area harvested",30599,30628,31510,30912.3333333333
+"Pacific_Region_ausnz","Not_Specified","Gross Production Value (current million US$)",76.09,96.57,119.67,97.4433333333333
+"Pacific_Region_ausnz","Not_Specified","Production",330323,325033,299673,318343
 "Pacific_Region_ausnz","Pacific_Region_tropical","Area harvested",3855,4060,3780,3898.33333333333
 "Pacific_Region_ausnz","Pacific_Region_tropical","Gross Production Value (current million US$)",64.64,76.25,82.15,74.3466666666667
 "Pacific_Region_ausnz","Pacific_Region_tropical","Production",79119,79833,80183,79711.6666666667
@@ -1497,11 +1497,8 @@
 "Pacific_Region_tropical","Asia_West","Gross Production Value (current million US$)",0,0,0,0
 "Pacific_Region_tropical","Asia_West","Production",2043,2166,2000,2069.66666666667
 "Pacific_Region_tropical","Europe_Eastern_north","Area harvested",40,32,35,35.6666666666667
-"Pacific_Region_tropical","Europe_Eastern_North","Area harvested",0,0,0,0
 "Pacific_Region_tropical","Europe_Eastern_north","Gross Production Value (current million US$)",0,0,0,0
-"Pacific_Region_tropical","Europe_Eastern_North","Gross Production Value (current million US$)",0,0,0,0
 "Pacific_Region_tropical","Europe_Eastern_north","Production",547,451,500,499.333333333333
-"Pacific_Region_tropical","Europe_Eastern_North","Production",0,0,0,0
 "Pacific_Region_tropical","Europe_Eastern_south","Area harvested",200,195,199,198
 "Pacific_Region_tropical","Europe_Eastern_south","Gross Production Value (current million US$)",0.38,0.41,0.45,0.413333333333333
 "Pacific_Region_tropical","Europe_Eastern_south","Production",2505,2450,2355,2436.66666666667
@@ -1514,6 +1511,9 @@
 "Pacific_Region_tropical","Mediterranean_SouthandEast","Area harvested",211,205,206,207.333333333333
 "Pacific_Region_tropical","Mediterranean_SouthandEast","Gross Production Value (current million US$)",0.38,0.41,0.45,0.413333333333333
 "Pacific_Region_tropical","Mediterranean_SouthandEast","Production",2513,2460,2363,2445.33333333333
+"Pacific_Region_tropical","Not_Specified","Area harvested",31869,35726,36915,34836.6666666667
+"Pacific_Region_tropical","Not_Specified","Gross Production Value (current million US$)",34.86,38.94,40.24,38.0133333333333
+"Pacific_Region_tropical","Not_Specified","Production",181253,185322,177027,181200.666666667
 "Pacific_Region_tropical","Pacific_Region_tropical","Area harvested",300459,301371,302473,301434.333333333
 "Pacific_Region_tropical","Pacific_Region_tropical","Gross Production Value (current million US$)",93.48,119.8,137.02,116.766666666667
 "Pacific_Region_tropical","Pacific_Region_tropical","Production",1446430,1564039,1539366,1516611.66666667

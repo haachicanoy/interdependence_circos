@@ -1,6 +1,6 @@
 # Where does our food come from - Production data - Circos
 # H. Achicanoy & C. Khoury
-# CIAT, 2015
+# CIAT, 2016
 
 g=gc(); rm(list=ls())
 
@@ -67,21 +67,7 @@ data_country <- merge(data_country,country_regions,by="Country")
 #could produce here an output file with merged countries, elements, summed values for years for each region_crops, and regions of countries. This should be ideal output file for circos at country level 
 write.csv(data_country, paste(work_dir, "/_circos/Prod/Prod_sum_country_regions_cropregions_2016_2_8.csv", sep=''), row.names=F)
 
-
-
-##########################################################################################################################################
-
-
-
-
-
-
-
-
-
-
-
-
+#
 
 data_country <- lapply(2009:2011,function(i)
 {
@@ -99,7 +85,7 @@ write.csv(data_country, paste(work_dir, "/_circos/Prod/regions_sourceofprod.csv"
 # Circos plot
 # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% #
 
-work_dir <- 'C:/Users/haachicanoy/Documents/GitHub/interdependence_circos/_production_systems'
+work_dir <- 'D:/Tobackup/_hmcfw/PGR_interdependence/analysis/interdependence_circos/_production_systems'
 
 options(warn=-1)
 library(circlize)
