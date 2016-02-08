@@ -20,19 +20,30 @@ top5_element <- lapply(1:length(fmeas), function(i)
   {
     subData <- measData[which(measData$R_origin==measData$R_origin[j] & measData$R_recipients==measData$R_recipients[j]),]
     subData <- subData[order(subData$Average, decreasing=TRUE),]; rownames(subData) <- 1:nrow(subData)
-    subData <- subData[subData$Average>0,]; rownames(subData) <- 1:nrow(subData)
-    if(nrow(subData)>5){
-      subData <- subData[1:5,]
+    subData <- subData[subData$Average>0,]
+    if(nrow(subData)!=0)
+    {
+      if(nrow(subData)>5){
+        subData <- subData[1:5,]
+        rownames(subData) <- 1:nrow(subData)
+      } else {
+        subData <- subData
+        rownames(subData) <- 1:nrow(subData)
+      }
+      return(subData)
     } else {
-      subData <- subData
+      return(cat('Combination from origin region:', as.character(measData$R_origin[j]), 'to recipient region:', as.character(measData$R_recipients[j]), ' has not flows\n'))
+      subData <- data.frame(Element=measData$Element[i], Item=NA, Average=NA, R_origin=measData$R_origin[j],  R_recipients=measData$R_recipients[j])
+      return(subData)
     }
-    return(subData)
   })
   top5 <- Reduce(function(...) rbind(..., deparse.level=1), top5)
   rownames(top5) <- 1:nrow(top5)
   return(top5)
 })
 top5_element <- Reduce(function(...) rbind(..., deparse.level=1), top5_element)
+
+write.csv(top5_element, paste(work_dir, '/_interactive/_useful_info/most_important_crop_flows.csv', sep=''), row.names=FALSE)
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= #
 # Food supplies without hierarchical level
