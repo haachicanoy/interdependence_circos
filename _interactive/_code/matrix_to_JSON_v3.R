@@ -2,27 +2,40 @@
 # H. Achicanoy & C. Khoury
 # CIAT, 2016
 
+# Loading information
 work_dir <-'C:/Users/haachicanoy/Documents/GitHub/interdependence_circos'
 all_elements <- read.csv(paste(work_dir, '/_interactive/_useful_info/fs_average_diet_regions_and_origins.csv', sep=''))
 all_elements <- all_elements[,c('Element','Item','Average','Region_crops','Region')]
 names(all_elements)[4:5] <- c('R_origin', 'R_recipients')
+all_elements <- all_elements[all_elements$R_origin!='Not_Specified',]; all_elements <- all_elements[all_elements$R_recipients!='Not_Specified',]
 
+# All posible flows
 regions <- sort(unique(as.character(all_elements$R_recipients)))
 all.combinations <- as.data.frame(expand.grid(regions, regions))
 colnames(all.combinations) <- c('R_origin', 'R_recipients')
 all.combinations$R_origin <- as.character(all.combinations$R_origin)
 all.combinations$R_recipients <- as.character(all.combinations$R_recipients)
+
+# Extract most important crops by flow
 fmeas <- sort(unique(as.character(all_elements$Element)))
-
-library(dplyr)
-empty.combinations <- all_elements[,c('R_origin', 'R_recipients')]; empty.combinations <- unique(empty.combinations); rownames(empty.combinations) <- 1:nrow(empty.combinations)
-empty.combinations <- anti_join(all.combinations, empty.combinations)
-
-empty.combinations$Element
-
 top5_element <- lapply(1:length(fmeas), function(i)
 {
+  # Subsetting by measure element
   measData <- all_elements[which(all_elements$Element==fmeas[[i]]),]; rownames(measData) <- 1:nrow(measData)
+  
+  library(dplyr)
+  empty.combinations <- measData[,c('R_origin', 'R_recipients')]; empty.combinations <- unique(empty.combinations); rownames(empty.combinations) <- 1:nrow(empty.combinations)
+  empty.combinations$R_origin <- as.character(empty.combinations$R_origin)
+  empty.combinations$R_recipients <- as.character(empty.combinations$R_recipients)
+  empty.combinations <- anti_join(all.combinations, empty.combinations)
+  
+  empty.combinations$Element <- as.character(unique(measData$Element))
+  empty.combinations$Item <- 'NA'
+  empty.combinations$Average <- 'NA'
+  
+  measData <- rbind(measData, empty.combinations); rm(empty.combinations)
+  rownames(measData) <- 1:nrow(measData)
+  
   top5 <- lapply(1:nrow(all.combinations), function(j)
   {
     subData <- measData[measData$R_origin==all.combinations$R_origin[j] & measData$R_recipients==all.combinations$R_recipients[j],]
@@ -123,15 +136,18 @@ top5_info <- lapply(1:length(elements), function(i)
   
   # Completing all flows
   library(dplyr)
-  all.combinations <- anti_join(all.combinations,combinations)
-  all.combinations$Element <- unique(as.character(sub_data$Element))
-  all.combinations$Item <- NA
-  all.combinations$Average <- NA
-  all.combinations <- rbind(sub_data, all.combinations); rm(combinations, sub_data)
-  rownames(all.combinations) <- 1:nrow(all.combinations)
+  if(dim(combinations)[1] < 529){
+    all.combinations <- anti_join(all.combinations, combinations)
+    all.combinations$Element <- unique(as.character(sub_data$Element))
+    all.combinations$Item <- NA
+    all.combinations$Average <- NA
+    all.combinations <- rbind(sub_data, all.combinations); rm(combinations, sub_data)
+    rownames(all.combinations) <- 1:nrow(all.combinations)
+  } else {
+    all.combinations <- sub_data
+  }
   
   # Fix regions names
-  
   all.combinations$R_origin <- gsub(pattern='^America_North$', replacement='N\nAmerica', x=all.combinations$R_origin)
   all.combinations$R_origin <- gsub(pattern='^America_Central_and_Mexico$', replacement='C\nAmerica', x=all.combinations$R_origin)
   all.combinations$R_origin <- gsub(pattern='^America_Caribbean$', replacement='Caribbean', x=all.combinations$R_origin)
@@ -180,40 +196,55 @@ top5_info <- lapply(1:length(elements), function(i)
   all.combinations$R_recipients <- gsub(pattern='^Pacific_Region_tropical$', replacement='Pacific', x=all.combinations$R_recipients)
   all.combinations$R_recipients <- gsub(pattern='^Pacific_Region_ausnz$', replacement='ANZ', x=all.combinations$R_recipients)
   
+  # All posible flows at matrix
   relationDF <- read.csv(flows[1], row.names=1); colnames(relationDF) <- rownames(relationDF)
-  relationDF <- as.data.frame(expand.grid(colnames(relationDF), rownames(relationDF)))
-  relationDF <- relationDF[,c(2,1)]; colnames(relationDF) <- c('R_origin', 'R_recipients')
+  #relationDF <- as.data.frame(expand.grid(colnames(relationDF), rownames(relationDF)))
+  #relationDF <- relationDF[,c(2,1)]; colnames(relationDF) <- c('R_origin', 'R_recipients')
   
-  statsFlow <- lapply(1:nrow(relationDF), function(j)
+  # rep(x, each=2)
+  
+  rowStatsFlow <- lapply(1:length(rownames(relationDF)), function(m)
   {
-    flow <- all.combinations[all.combinations$R_origin==relationDF$R_origin[j] & all.combinations$R_recipients==relationDF$R_recipients[j],]
-    flow <- unique(flow)
-    values <- flow$Average; positions <- as.character(flow$Item)
-    if(length(values)==1){
-      if(sum(is.na(values))>0){values <- ''}
-      if(sum(is.na(positions))){positions <- ''} else {
+    colStatsFlow <- lapply(1:length(rownames(relationDF)), function(n)
+    {
+      # Subsetting by flow
+      flow <- all.combinations[all.combinations$R_origin==rownames(relationDF)[m] & all.combinations$R_recipients==rownames(relationDF)[n],]
+      flow <- unique(flow)
+      
+      values <- flow$Average; positions <- as.character(flow$Item)
+      if(length(values)==1){
+        if(sum(is.na(values))>0){values <- ''}
+        if(sum(is.na(positions))){positions <- ''} else {
+          grep2 <- Vectorize(FUN=grep, vectorize.args='pattern')
+          positions <- grep2(pattern=paste('^', positions, '$', sep=''), x=cropList)
+          positions <- positions - 1
+          }
+      } else {
         grep2 <- Vectorize(FUN=grep, vectorize.args='pattern')
-        positions <- grep2(pattern=paste('^', positions, '$', sep=''), x=cropList)
+        positions <- grep2(pattern=paste('^', positions, '$', sep=''), x=cropList) # match(positions, cropList)
         positions <- positions - 1
       }
-    } else {
-      grep2 <- Vectorize(FUN=grep, vectorize.args='pattern')
-      positions <- grep2(pattern=paste('^', positions, '$', sep=''), x=cropList) # match(positions, cropList)
-      positions <- positions - 1
-    }
-    if(is.numeric(values)){
-      flowInfo <- list(values=round(values,1),
-                       positions=positions)
-    } else {
-      flowInfo <- list(values=values,
-                       positions=positions)
-    }
+      
+      if(is.numeric(values)){
+        flowInfo <- list(values=round(values,1),
+                         positions=positions)
+      } else {
+        flowInfo <- list(values=values,
+                         positions=positions)
+      }
+      return(flowInfo)
+    })
     
-    return(flowInfo)
+    colStatsFlow <- rep(colStatsFlow, each=2)
+    return(colStatsFlow)
+    
   })
   
-  return(statsFlow)
+  rowStatsFlow <- rep(rowStatsFlow, each=2)
+  return(rowStatsFlow)
+  
 })
+
 rm(all.combinations, elements)
 
 ### Define elements to construct JSON file
