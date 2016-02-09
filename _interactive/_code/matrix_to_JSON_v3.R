@@ -9,14 +9,23 @@ names(all_elements)[4:5] <- c('R_origin', 'R_recipients')
 
 regions <- sort(unique(as.character(all_elements$R_recipients)))
 all.combinations <- as.data.frame(expand.grid(regions, regions))
+colnames(all.combinations) <- c('R_origin', 'R_recipients')
+all.combinations$R_origin <- as.character(all.combinations$R_origin)
+all.combinations$R_recipients <- as.character(all.combinations$R_recipients)
 fmeas <- sort(unique(as.character(all_elements$Element)))
+
+library(dplyr)
+empty.combinations <- all_elements[,c('R_origin', 'R_recipients')]; empty.combinations <- unique(empty.combinations); rownames(empty.combinations) <- 1:nrow(empty.combinations)
+empty.combinations <- anti_join(all.combinations, empty.combinations)
+
+empty.combinations$Element
 
 top5_element <- lapply(1:length(fmeas), function(i)
 {
   measData <- all_elements[which(all_elements$Element==fmeas[[i]]),]; rownames(measData) <- 1:nrow(measData)
   top5 <- lapply(1:nrow(all.combinations), function(j)
   {
-    subData <- measData[which(measData$R_origin==measData$R_origin[j] & measData$R_recipients==measData$R_recipients[j]),]
+    subData <- measData[measData$R_origin==all.combinations$R_origin[j] & measData$R_recipients==all.combinations$R_recipients[j],]
     subData <- subData[order(subData$Average, decreasing=TRUE),]; rownames(subData) <- 1:nrow(subData)
     subData <- subData[subData$Average>0,]
     if(nrow(subData)!=0)
@@ -185,10 +194,12 @@ top5_info <- lapply(1:length(elements), function(i)
       if(sum(is.na(positions))){positions <- ''} else {
         grep2 <- Vectorize(FUN=grep, vectorize.args='pattern')
         positions <- grep2(pattern=paste('^', positions, '$', sep=''), x=cropList)
+        positions <- positions - 1
       }
     } else {
       grep2 <- Vectorize(FUN=grep, vectorize.args='pattern')
       positions <- grep2(pattern=paste('^', positions, '$', sep=''), x=cropList) # match(positions, cropList)
+      positions <- positions - 1
     }
     if(is.numeric(values)){
       flowInfo <- list(values=round(values,1),
@@ -226,21 +237,21 @@ mat.labels <- gsub(pattern='*_rep$', replacement='', x=mat.labels)
 
 # {help} for JSON file
 
-help <- list(calories    = list(values, positions), # values and positions are vectors of data
-             protein     = list(values, positions),
-             fat         = list(values, positions),
-             food_weight = list(values, positions))
+help <- top5_info
+names(help) <- c('calories','protein','fat','food_weight')
 
 ### Making JSON file
 
 # Put all elements together in a list, after that apply toJSON function
 # Sublist can contain different type of information to show
-json.file <- list(names=mat.labels,
-                  regions=regions,
-                  matrix=matrices
+json.file <- list(names   = mat.labels,
+                  labels  = cropList,
+                  regions = regions,
+                  matrix  = matrices,
+                  help    = help
 )
 
-sink(paste(work_dir, '/_interactive/_json/fs_interdependence.json', sep='')) # redirect console output to a file
+sink(paste(work_dir, '/_interactive/_json/fs_interdependence_complex.json', sep='')) # redirect console output to a file
 toJSON(json.file, pretty=TRUE)
 sink()
 
