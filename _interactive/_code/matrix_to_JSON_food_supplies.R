@@ -1,4 +1,4 @@
-# Matrix to JSON format using R: Extract top 5 of important crops by flow
+# Matrix to JSON format using R: Extract top 5 of important crops by flow - Food supplies
 # H. Achicanoy & C. Khoury
 # CIAT, 2016
 
@@ -40,7 +40,7 @@ top5_element <- lapply(1:length(fmeas), function(i)
   {
     subData <- measData[measData$R_origin==all.combinations$R_origin[j] & measData$R_recipients==all.combinations$R_recipients[j],]
     subData <- subData[order(subData$Average, decreasing=TRUE),]; rownames(subData) <- 1:nrow(subData)
-    subData <- subData[subData$Average>0,]
+    subData <- subData[subData$Average>=1,] # subData$Average>0
     if(nrow(subData)!=0)
     {
       if(nrow(subData)>5){
@@ -284,66 +284,5 @@ json.file <- list(names   = mat.labels,
 )
 
 sink(paste(work_dir, '/_interactive/_json/fs_interdependence_complex.json', sep='')) # redirect console output to a file
-toJSON(json.file, pretty=TRUE)
-sink()
-
-# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= #
-# Production systems without hierarchical level
-# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= #
-
-library(jsonlite)
-
-### Load flow matrix
-
-# Matrix should have macro regions and regions. All flows should be in the same table.
-work_dir <- 'C:/Users/haachicanoy/Documents/GitHub/interdependence_circos'
-flows <- list.files(path=paste(work_dir, '/_interactive/_flows_matrix/prod_without_hierarchical_level', sep=''), pattern='.csv$', full.names=TRUE)
-flows <- flows[c(2,1,3)]
-flowsFiles <- lapply(flows, function(x)
-{
-  z <- read.csv(x); rownames(z) <- z[,1]; z <- z[,-1]
-  colnames(z) <- rownames(z)
-  z <- round(z, 1)
-  z2 <- z
-  rownames(z2) <- paste(rownames(z2), '_rep', sep='')
-  colnames(z2) <- rownames(z2)
-  pos <- seq(1, 46, 2)
-  pos2 <- seq(2, 46, 2)
-  zFinal <- matrix(data=NA, nrow=46, ncol=46); zFinal <- as.data.frame(zFinal)
-  rownames(zFinal)[pos] <- colnames(zFinal)[pos] <- rownames(z)
-  rownames(zFinal)[pos2] <- colnames(zFinal)[pos2] <- rownames(z2)
-  zFinal[pos, pos] <- z
-  zFinal[pos2, pos2] <- z2
-  zFinal[pos, pos2] <- z
-  zFinal[pos2, pos] <- z
-  return(zFinal)
-})
-
-### Define elements to construct JSON file
-
-# {names} for JSON file
-mat.labels <- rownames(flowsFiles[[1]])
-
-# {matrix} for JSON file
-matrices <- lapply(flowsFiles, as.matrix)
-names(matrices) <- c('production quantity','harvested area','production value')
-
-# {regions} for JSON file
-regions <- setdiff(1:length(mat.labels),grep(pattern='*_rep$', x=mat.labels)) - 1
-
-# Redo {names} for JSON file
-mat.labels <- gsub(pattern='*_rep$', replacement='', x=mat.labels)
-# mat.labels <- gsub(pattern='\n', replacement='<br />', x=mat.labels)
-
-### Making JSON file
-
-# Put all elements together in a list, after that apply toJSON function
-# Sublist can contain different type of information to show
-json.file <- list(names=mat.labels,
-                  regions=regions,
-                  matrix=matrices
-)
-
-sink(paste(work_dir, '/_interactive/_json/prod_interdependence.json', sep='')) # redirect console output to a file
 toJSON(json.file, pretty=TRUE)
 sink()
