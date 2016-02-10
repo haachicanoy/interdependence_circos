@@ -210,6 +210,7 @@ top5_info <- lapply(1:length(elements), function(i)
       # Subsetting by flow
       flow <- all.combinations[all.combinations$R_origin==rownames(relationDF)[m] & all.combinations$R_recipients==rownames(relationDF)[n],]
       flow <- unique(flow)
+      flow <- flow[order(flow$Average, decreasing=TRUE),]; rownames(flow) <- 1:nrow(flow)
       
       values <- flow$Average; positions <- as.character(flow$Item)
       if(length(values)==1){
