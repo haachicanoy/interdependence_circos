@@ -248,7 +248,25 @@ top5_info <- lapply(1:length(elements), function(i)
 
 rm(all.combinations, elements)
 
+
 ### Define elements to construct JSON file
+
+# {description} for JSON file
+library(qdap)
+
+work_dir <-'C:/Users/haachicanoy/Documents/GitHub/interdependence_circos'
+text_to_website <- read.transcript(paste(work_dir, "/_interactive/_useful_info/Interdependence-Regionstext.docx", sep=""))
+colnames(text_to_website) <- c('field', 'text')
+grep2 <- Vectorize(grep, vectorize.args='pattern')
+mtch <- unlist(grep2(pattern=c('^Food supplies*','^By$'), text_to_website$field))
+text_to_website <- text_to_website[mtch[-length(mtch)],]
+text_to_website <- text_to_website[c(1,2,4,3),]
+text_to_website <- text_to_website[grep(pattern='^Food supplies', text_to_website$field),]
+
+description <- list(title   = text_to_website$text[1],
+                    summary = text_to_website$text[2],
+                    by      = text_to_website$text[3],
+                    content = text_to_website$text[4])
 
 # {labels} for JSON file
 crop.labels <- cropList
@@ -272,15 +290,34 @@ mat.labels <- gsub(pattern='*_rep$', replacement='', x=mat.labels)
 help <- top5_info
 names(help) <- c('calories','protein','fat','food_weight')
 
+# {names_description} for JSON file
+library(qdap)
+
+work_dir <-'C:/Users/haachicanoy/Documents/GitHub/interdependence_circos'
+text_to_website <- read.transcript(paste(work_dir, "/_interactive/_useful_info/Interdependence-Regionstext.docx", sep=""))
+colnames(text_to_website) <- c('field', 'text')
+grep2 <- Vectorize(grep, vectorize.args='pattern')
+mtch <- unlist(grep2(pattern=c('^Food supplies*','^By$'), text_to_website$field))
+text_to_website <- text_to_website[mtch[-length(mtch)],]
+text_to_website <- text_to_website[c(1,2,4,3),]
+text_to_website <- text_to_website[grep(pattern='^Food supplies', text_to_website$field),]
+
+description <- list(title   = text_to_website$text[1],
+                    summary = text_to_website$text[2],
+                    by      = text_to_website$text[3],
+                    content = text_to_website$text[4])
+
 ### Making JSON file
 
 # Put all elements together in a list, after that apply toJSON function
 # Sublist can contain different type of information to show
-json.file <- list(names   = mat.labels,
-                  labels  = cropList,
-                  regions = regions,
-                  matrix  = matrices,
-                  help    = help
+json.file <- list(names             = mat.labels,
+                  labels            = cropList,
+                  regions           = regions,
+                  names_description = names_description, 
+                  matrix            = matrices,
+                  help              = help,
+                  description       = description
 )
 
 sink(paste(work_dir, '/_interactive/_json/fs_interdependence_complex.json', sep='')) # redirect console output to a file
