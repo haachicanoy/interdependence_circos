@@ -66,7 +66,7 @@ top5_element <- Reduce(function(...) rbind(..., deparse.level=1), top5_element)
 write.csv(top5_element, paste(work_dir, '/_interactive/_useful_info/most_important_prod_crop_flows.csv', sep=''), row.names=FALSE)
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= #
-# Food supplies without hierarchical level
+# Production systems without hierarchical level
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= #
 
 options(warn=-1)
@@ -250,6 +250,20 @@ rm(all.combinations, elements)
 
 ### Define elements to construct JSON file
 
+# {description} for JSON file
+library(qdap)
+
+work_dir <-'C:/Users/haachicanoy/Documents/GitHub/interdependence_circos'
+text_to_website <- read.transcript(paste(work_dir, "/_interactive/_useful_info/Interdependence-Regionstext.docx", sep=""))
+colnames(text_to_website) <- c('field', 'text')
+grep2 <- Vectorize(grep, vectorize.args='pattern')
+mtch <- unlist(grep2(pattern=c('^Production*'), text_to_website$field))
+text_to_website <- text_to_website[mtch,]
+
+description <- c(title   = text_to_website$text[1],
+                 summary = text_to_website$text[2],
+                 content = text_to_website$text[3])
+
 # {labels} for JSON file
 crop.labels <- cropList
 
@@ -265,12 +279,47 @@ regions <- setdiff(1:length(mat.labels),grep(pattern='*_rep$', x=mat.labels)) - 
 
 # Redo {names} for JSON file
 mat.labels <- gsub(pattern='*_rep$', replacement='', x=mat.labels)
+mat.labels <- gsub(pattern='^N\nAmerica$', replacement='N Amer', x=mat.labels)
+mat.labels <- gsub(pattern='^C\nAmerica$', replacement='C Amer', x=mat.labels)
+mat.labels <- gsub(pattern='^Caribbean$', replacement='Carib', x=mat.labels)
+mat.labels <- gsub(pattern='^Trop. S.\nAmerica$', replacement='Trop S Amer', x=mat.labels)
+mat.labels <- gsub(pattern='^Temp. S.\nAmerica$', replacement='Temp S Amer', x=mat.labels)
+mat.labels <- gsub(pattern='^W\nAfrica$', replacement='W Africa', x=mat.labels)
+mat.labels <- gsub(pattern='^C\nAfrica$', replacement='C Africa', x=mat.labels)
+mat.labels <- gsub(pattern='^E\nAfrica$', replacement='E Africa', x=mat.labels)
+mat.labels <- gsub(pattern='^S\nAfrica$', replacement='S Africa', x=mat.labels)
+mat.labels <- gsub(pattern='^NW\nEurope$', replacement='NW Eur', x=mat.labels)
+mat.labels <- gsub(pattern='^SW\nEurope$', replacement='SW Eur', x=mat.labels)
+mat.labels <- gsub(pattern='^NE\nEurope$', replacement='NE Eur', x=mat.labels)
+mat.labels <- gsub(pattern='^SE\nEurope$', replacement='SE Eur', x=mat.labels)
+mat.labels <- gsub(pattern='^SE\nMediterranean$', replacement='SE Med', x=mat.labels)
+mat.labels <- gsub(pattern='^W\nAsia$', replacement='W Asia', x=mat.labels)
+mat.labels <- gsub(pattern='^C\nAsia$', replacement='C Asia', x=mat.labels)
+mat.labels <- gsub(pattern='^S\nAsia$', replacement='S Asia', x=mat.labels)
+mat.labels <- gsub(pattern='^E\nAsia$', replacement='E Asia', x=mat.labels)
+mat.labels <- gsub(pattern='^SE\nAsia$', replacement='SE Asia', x=mat.labels)
+mat.labels <- gsub(pattern='^Pacific$', replacement='Pac', x=mat.labels)
 # mat.labels <- gsub(pattern='\n', replacement='<br />', x=mat.labels)
 
 # {help} for JSON file
 
 help <- top5_info
 names(help) <- c('production_quantity','harvested_area','production_value')
+
+# {names_description} for JSON file
+library(qdap)
+
+work_dir <-'C:/Users/haachicanoy/Documents/GitHub/interdependence_circos'
+text_to_website <- read.transcript(paste(work_dir, "/_interactive/_useful_info/Interdependence-Regionstext.docx", sep=""))
+colnames(text_to_website) <- c('field', 'text')
+text_to_website <- text_to_website[30:52,]
+
+names_description <- lapply(1:nrow(text_to_website), function(i)
+{
+  nm_description <- c(title=as.character(text_to_website$field[[i]]), content=as.character(text_to_website$text[[i]]))
+  return(nm_description)
+})
+names_description <- rep(names_description, each=2)
 
 ### Making JSON file
 
@@ -283,6 +332,6 @@ json.file <- list(names   = mat.labels,
                   help    = help
 )
 
-sink(paste(work_dir, '/_interactive/_json/prod_interdependence_complex.json', sep='')) # redirect console output to a file
-toJSON(json.file, pretty=TRUE)
+sink(paste(work_dir, '/_interactive/_json/prod_interdependence_complex_text.json', sep='')) # redirect console output to a file
+toJSON(json.file, pretty=FALSE)
 sink()
