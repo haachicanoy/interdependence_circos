@@ -212,7 +212,7 @@ top5_info <- lapply(1:length(elements), function(i)
       flow <- unique(flow)
       flow <- flow[order(flow$Average, decreasing=TRUE),]; rownames(flow) <- 1:nrow(flow)
       
-      values <- flow$Average; positions <- as.character(flow$Item)
+      values <- round(flow$Average, 0); positions <- as.character(flow$Item)
       if(length(values)==1){
         if(sum(is.na(values))>0){values <- ''}
         if(sum(is.na(positions))){positions <- ''} else {
