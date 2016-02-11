@@ -325,11 +325,13 @@ names_description <- rep(names_description, each=2)
 
 # Put all elements together in a list, after that apply toJSON function
 # Sublist can contain different type of information to show
-json.file <- list(names   = mat.labels,
-                  labels  = cropList,
-                  regions = regions,
-                  matrix  = matrices,
-                  help    = help
+json.file <- list(names             = mat.labels,
+                  labels            = cropList,
+                  regions           = regions,
+                  names_description = names_description, 
+                  matrix            = matrices,
+                  help              = help,
+                  description       = description
 )
 
 sink(paste(work_dir, '/_interactive/_json/prod_interdependence_complex_text.json', sep='')) # redirect console output to a file
