@@ -255,7 +255,7 @@ rm(all.combinations, elements)
 library(qdap)
 
 work_dir <-'C:/Users/haachicanoy/Documents/GitHub/interdependence_circos'
-text_to_website <- read.transcript(file=paste(work_dir, "/_interactive/_useful_info/Interdependence-Regionstext.docx", sep=""), sep = "-")
+text_to_website <- read.transcript(file=paste(work_dir, "/_interactive/_useful_info/Interdependence-Regionstext.docx", sep=""))
 colnames(text_to_website) <- c('field', 'text')
 grep2 <- Vectorize(grep, vectorize.args='pattern')
 mtch <- unlist(grep2(pattern=c('^Food supplies*'), text_to_website$field))
