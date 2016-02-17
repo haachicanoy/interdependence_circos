@@ -34,26 +34,37 @@ top5_element <- lapply(1:length(fmeas), function(i)
   empty.combinations$Average <- 'NA'
   
   measData <- rbind(measData, empty.combinations); rm(empty.combinations)
+  measData$Average <- as.numeric(measData$Average)
   rownames(measData) <- 1:nrow(measData)
   
   top5 <- lapply(1:nrow(all.combinations), function(j)
   {
     subData <- measData[measData$R_origin==all.combinations$R_origin[j] & measData$R_recipients==all.combinations$R_recipients[j],]
     subData <- subData[order(subData$Average, decreasing=TRUE),]; rownames(subData) <- 1:nrow(subData)
-    subData <- subData[subData$Average>=1,] # subData$Average>0
-    if(nrow(subData)!=0)
+    
+    if(nrow(subData)>1) # nrow(subData)!=0
     {
       if(nrow(subData)>5){
-        subData <- subData[1:5,]
-        rownames(subData) <- 1:nrow(subData)
+        subData <- subData[subData$Average>=1,] # subData$Average>0
+        if(nrow(subData)!=0){
+          subData <- subData[1:5,]; subData <- subData[complete.cases(subData),]
+          rownames(subData) <- 1:nrow(subData)
+        } else {
+          subData <- data.frame(Element=measData$Element[i], Item=NA, Average=NA, R_origin=all.combinations$R_origin[j],  R_recipients=all.combinations$R_recipients[j])
+        }
       } else {
-        subData <- subData
-        rownames(subData) <- 1:nrow(subData)
+        subData <- subData[subData$Average>=1,] # subData$Average>0
+        if(nrow(subData)!=0){
+          subData <- subData[1:5,]; subData <- subData[complete.cases(subData),]
+          rownames(subData) <- 1:nrow(subData)
+        } else {
+          subData <- data.frame(Element=measData$Element[i], Item=NA, Average=NA, R_origin=all.combinations$R_origin[j],  R_recipients=all.combinations$R_recipients[j])
+        }
       }
       return(subData)
     } else {
-      return(cat('Combination from origin region:', as.character(measData$R_origin[j]), 'to recipient region:', as.character(measData$R_recipients[j]), ' has not flows\n'))
-      subData <- data.frame(Element=measData$Element[i], Item=NA, Average=NA, R_origin=measData$R_origin[j],  R_recipients=measData$R_recipients[j])
+      cat('Combination from origin region:', as.character(all.combinations$R_origin[j]), 'to recipient region:', as.character(all.combinations$R_recipients[j]), 'has not flows\n')
+      subData <- subData
       return(subData)
     }
   })
