@@ -301,7 +301,9 @@ text_to_website <- text_to_website[mtch,]
 
 description <- c(title   = text_to_website$text[1],
                  summary = text_to_website$text[2],
-                 content = text_to_website$text[3])
+                 content = text_to_website$text[3],
+                 origin  = 'Origin',
+                 target  = 'Consumer')
 
 # {labels} for JSON file
 crop.labels <- cropList
