@@ -69,8 +69,8 @@ code_regions <- nice_regions[,c("Region","Region_code")]
 nice_regions <- nice_regions[,c("Region","Region_nice")]
 
 # Step 1: Change region name to region nice name
-cOrgData_region <- merge(cOrgData_region,code_regions,by="Region")
-cOrgData_region <- merge(cOrgData_region,nice_regions,by="Region")
+cOrgData_region <- merge(cOrgData_region, code_regions, by="Region")
+cOrgData_region <- merge(cOrgData_region, nice_regions, by="Region")
 cOrgData_region <- unique(cOrgData_region)
 cOrgData_region$Region <- NULL
 names(cOrgData_region)[ncol(cOrgData_region)-1:0] <- c("Rcode_recipients","R_recipients")
@@ -79,12 +79,12 @@ names(cOrgData_region)[ncol(cOrgData_region)-1:0] <- c("Rcode_recipients","R_rec
 names(nice_regions)[1] <- "Region_crops"
 names(code_regions)[1] <- "Region_crops"
 
-cOrgData_region <- merge(cOrgData_region,nice_regions,by="Region_crops"); cOrgData_region <- unique(cOrgData_region)
-cOrgData_region <- merge(cOrgData_region,code_regions,by="Region_crops"); cOrgData_region <- unique(cOrgData_region)
+cOrgData_region <- merge(cOrgData_region, nice_regions, by="Region_crops"); cOrgData_region <- unique(cOrgData_region)
+cOrgData_region <- merge(cOrgData_region, code_regions, by="Region_crops"); cOrgData_region <- unique(cOrgData_region)
 cOrgData_region$Region_crops <- NULL
 names(cOrgData_region)[ncol(cOrgData_region)-1:0] <- c("R_origin","Rcode_origin")
 
-cOrgData_region <- cOrgData_region[,c("R_origin","Rcode_origin","R_recipients","Rcode_recipients","Element","Y2009","Y2010","Y2011","Average")]
+cOrgData_region <- cOrgData_region[,c("R_origin","Rcode_origin","R_recipients","Rcode_recipients","Element","Average")]
 rownames(cOrgData_region) <- 1:nrow(cOrgData_region)
 
 cOrgData_region$R_recipients <- gsub(pattern='Central Africa',replacement='C\nAfrica',cOrgData_region$R_recipients,fixed=TRUE)
@@ -170,7 +170,7 @@ lapply(1:length(umeas),function(i)
   levels.regions <- as.character(df1$region)
   origin_regions <- origin_regions[levels.regions,levels.regions]
   
-  write.csv(origin_regions, paste(work_dir, "/_circos/Prod/interchange_", measList[[i]], "_2009-2011.csv", sep=''),row.names=TRUE)
+  write.csv(origin_regions, paste(work_dir, "/_circos/Prod/interchange_", measList[[i]], "_2009-2011_weighted.csv", sep=''),row.names=TRUE)
   
   origin_regions <- as.matrix(origin_regions)
   dimnames(origin_regions)<-list(orig=levels.regions,dest=levels.regions)
@@ -320,6 +320,6 @@ lapply(1:length(umeas),function(i)
     df1$sum2[n] = df1$sum2[n] + abs(origin_regions[m, n])
   }
   
-  dev.copy2pdf(file=paste(work_dir, "/_circos/_figures/interchange_production_", measList[[i]], "_2009-2011_all.pdf",sep=""), height=10, width=10)
+  dev.copy2pdf(file=paste(work_dir, "/_circos/_figures/interchange_production_", measList[[i]], "_2009-2011_all_weighted.pdf",sep=""), height=10, width=10)
   
 })
