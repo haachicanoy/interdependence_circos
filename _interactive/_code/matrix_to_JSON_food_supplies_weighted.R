@@ -393,6 +393,9 @@ text_to_vectorize <- lapply(1:length(text_to_vectorize), function(i)
   }
   grep2 <- Vectorize(grep, vectorize.args='pattern')
   text_to_vectorize[[i]][[3]] <- unique(countries_iso$ISO[unlist(grep2(pattern=text_to_vectorize[[i]][[3]], countries_iso$Country, fixed=TRUE))])
+  
+  if(i==9){text_to_vectorize[[i]][[3]][length(text_to_vectorize[[i]][[3]])+1] <- 'SSD'}
+  
   return(text_to_vectorize[[i]])
 })
 
