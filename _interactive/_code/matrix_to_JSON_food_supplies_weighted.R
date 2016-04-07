@@ -380,13 +380,13 @@ countries_iso$ISO <- as.character(countries_iso$ISO)
 text_to_vectorize <- lapply(1:length(text_to_vectorize), function(i)
 {
   if(i==1|i==11|i==23){
-    text_to_vectorize[[i]][3] <- gsub(pattern='Includes ', replacement='', text_to_vectorize[[i]][3], fixed=TRUE)
+    text_to_vectorize[[i]][3] <- gsub(pattern='Food supply data analyzed for ', replacement='', text_to_vectorize[[i]][3], fixed=TRUE)
     text_to_vectorize[[i]][3] <- gsub(pattern='.', replacement='', text_to_vectorize[[i]][3], fixed=TRUE)
     text_to_vectorize[[i]][3] <- gsub(pattern=' and ', replacement=', ', text_to_vectorize[[i]][3], fixed=TRUE)
     text_to_vectorize[[i]][3] <- gsub(pattern=', and ', replacement=', ', text_to_vectorize[[i]][3], fixed=TRUE)
     text_to_vectorize[[i]][3] <- strsplit(text_to_vectorize[[i]][3], split=', ', fixed=TRUE)
   } else {
-    text_to_vectorize[[i]][3] <- gsub(pattern='Includes ', replacement='', text_to_vectorize[[i]][3], fixed=TRUE)
+    text_to_vectorize[[i]][3] <- gsub(pattern='Food supply data analyzed for ', replacement='', text_to_vectorize[[i]][3], fixed=TRUE)
     text_to_vectorize[[i]][3] <- gsub(pattern='.', replacement='', text_to_vectorize[[i]][3], fixed=TRUE)
     text_to_vectorize[[i]][3] <- gsub(pattern=', and ', replacement=', ', text_to_vectorize[[i]][3], fixed=TRUE)
     text_to_vectorize[[i]][3] <- strsplit(text_to_vectorize[[i]][3], split=', ', fixed=TRUE)
